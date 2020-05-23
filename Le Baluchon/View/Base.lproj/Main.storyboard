@@ -19,12 +19,15 @@
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cqc-sH-W2e">
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
+                    <connections>
+                        <segue destination="qNP-dB-KoB" kind="relationship" relationship="rootViewController" id="CuF-7R-Aco"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uz0-CO-NPK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-345" y="58"/>
         </scene>
-        <!--View Controller-->
+        <!--Weather-->
         <scene sceneID="uNi-H4-CbU">
             <objects>
                 <viewController id="qNP-dB-KoB" sceneMemberID="viewController">
@@ -34,10 +37,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="WjB-Ot-D8Q"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Weather" id="Su3-YJ-CGG"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df0-fc-3R4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="480" y="58"/>
+            <point key="canvasLocation" x="479.71014492753625" y="57.589285714285708"/>
         </scene>
     </scenes>
 </document>
