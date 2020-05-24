@@ -38,6 +38,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpp-nD-g5W">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <state key="normal" image="position"/>
+                                        <connections>
+                                            <action selector="locationPressed:" destination="qNP-dB-KoB" eventType="touchUpInside" id="Obh-Rh-gDo"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search city" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IZv-P8-XcJ">
                                         <rect key="frame" x="70" y="0.0" width="234" height="40"/>
@@ -51,6 +54,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QbK-6H-Rza">
                                         <rect key="frame" x="344" y="0.0" width="30" height="30"/>
                                         <state key="normal" image="search"/>
+                                        <connections>
+                                            <action selector="searchedPressed:" destination="qNP-dB-KoB" eventType="touchUpInside" id="VtI-3B-9eA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -82,11 +88,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paris" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdJ-2R-dDY">
-                                <rect key="frame" x="194" y="384" width="200" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="3Vp-qq-2fu"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="bqJ-r8-vBj"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="384" width="374" height="50.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -104,7 +106,6 @@
                             <constraint firstItem="5y0-8Z-abJ" firstAttribute="centerX" secondItem="5Fd-Rg-oqJ" secondAttribute="centerX" id="1Ti-00-yFv"/>
                             <constraint firstItem="7j2-z5-k4A" firstAttribute="top" secondItem="MKa-4t-8ut" secondAttribute="bottom" constant="10" id="522-Rv-tRd"/>
                             <constraint firstItem="MKa-4t-8ut" firstAttribute="leading" secondItem="WjB-Ot-D8Q" secondAttribute="leading" constant="250" id="Gce-OU-JuX"/>
-                            <constraint firstItem="RdJ-2R-dDY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WjB-Ot-D8Q" secondAttribute="leading" symbolic="YES" id="PfE-ua-qNZ"/>
                             <constraint firstItem="WjB-Ot-D8Q" firstAttribute="trailing" secondItem="5y0-8Z-abJ" secondAttribute="trailing" constant="20" id="SJL-im-s50"/>
                             <constraint firstItem="WjB-Ot-D8Q" firstAttribute="trailing" secondItem="RdJ-2R-dDY" secondAttribute="trailing" constant="20" id="Si2-Rf-nDx"/>
                             <constraint firstItem="WjB-Ot-D8Q" firstAttribute="trailing" secondItem="MKa-4t-8ut" secondAttribute="trailing" constant="20" id="UC8-fe-MdI"/>
@@ -112,6 +113,7 @@
                             <constraint firstItem="5y0-8Z-abJ" firstAttribute="top" secondItem="WjB-Ot-D8Q" secondAttribute="top" constant="20" id="ZSh-Jz-X8k"/>
                             <constraint firstItem="5y0-8Z-abJ" firstAttribute="leading" secondItem="WjB-Ot-D8Q" secondAttribute="leading" constant="20" id="cef-cA-KEJ"/>
                             <constraint firstItem="7j2-z5-k4A" firstAttribute="top" secondItem="MKa-4t-8ut" secondAttribute="bottom" constant="10" id="deT-8k-rDh"/>
+                            <constraint firstItem="RdJ-2R-dDY" firstAttribute="leading" secondItem="WjB-Ot-D8Q" secondAttribute="leading" constant="20" id="gFv-vn-7pO"/>
                             <constraint firstItem="WjB-Ot-D8Q" firstAttribute="trailing" secondItem="7j2-z5-k4A" secondAttribute="trailing" constant="20" id="t5S-il-yhe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WjB-Ot-D8Q"/>
@@ -127,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df0-fc-3R4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="262" y="161"/>
+            <point key="canvasLocation" x="260.86956521739131" y="160.71428571428569"/>
         </scene>
     </scenes>
     <resources>
