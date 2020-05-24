@@ -1,14 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "icons8-cloudshot-50.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icons8-cloudshot-100.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icons8-cloudshot-150.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
