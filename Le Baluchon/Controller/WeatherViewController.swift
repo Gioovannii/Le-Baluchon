@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class WeatherViewController: UIViewController {
+final class WeatherViewController: UIViewController {
     
     //MARK:- IBOutlets
     @IBOutlet weak var conditionImageView: UIImageView!
@@ -17,20 +17,31 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     
-    var weatherManager = WeatherManager()
-    let locationManager = CLLocationManager()
+    private var weatherManager = WeatherService()
+    private let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        WeatherService().getWeatherData { result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                     print(data)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         //locationManager.startUpdatingLocation() to constant monitor the location
         locationManager.requestLocation()
         
-        weatherManager.delegate = self
+//        weatherManager.delegate = self
         searchTextField.delegate = self
     }
     @IBAction func locationPressed(_ sender: UIButton) {
+        cityLabel.text = "Loading..."
         locationManager.requestLocation()
     }
 }
@@ -59,35 +70,36 @@ extension WeatherViewController: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let city = searchTextField.text {
-            weatherManager.fetchWeather(cityName: city)
+//            weatherManager.fetchWeather(cityName: city)
         }
         searchTextField.text = ""
     }
 }
 
 //MARK: - WeatherManagerDelegate
-extension WeatherViewController: WeatherManagerDelegate {
-    
-    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
-        DispatchQueue.main.async {
-            self.temperatureLabel.text = weather.temperatureString
-            self.conditionImageView.image = UIImage(imageLiteralResourceName: weather.conditionName)
-            self.cityLabel.text = weather.cityName
-        }
-    }
-    func didFailWithError(error: Error) {
-        print(error)
-    }
+extension WeatherViewController {
+//
+//    func didUpdateWeather(_ weatherManager: WeatherService, weather: WeatherModel) {
+//        DispatchQueue.main.async {
+//            self.temperatureLabel.text = weather.temperatureString
+//            self.conditionImageView.image = UIImage(imageLiteralResourceName: weather.conditionName)
+//            self.cityLabel.text = weather.cityName
+//        }
+//    }
+//    func didFailWithError(error: Error) {
+//        print(error)
+//    }
 }
 
 //MARK: - LocationManagerDelegate
 extension WeatherViewController: CLLocationManagerDelegate {
+    // Get location by giving to the model then fetch via network Call
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last  {
             locationManager.stopUpdatingLocation()
         let lat = location.coordinate.latitude
         let lon = location.coordinate.longitude
-        weatherManager.fetchWeather(latitude: lat, longitude: lon)
+//        weatherService.fetchWeather(latitude: lat, longitude: lon)
     }
 }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
