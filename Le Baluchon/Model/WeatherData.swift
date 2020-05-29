@@ -1,5 +1,5 @@
 //
-//  WeatherData.swift
+//  WeatherModel.swift
 //  Le Baluchon
 //
 //  Created by mac on 2020/5/24.
@@ -8,17 +8,33 @@
 
 import Foundation
 
-struct WeatherData: Codable {
-    let name: String
-    let main: Main
-    let weather: [Weather]
-}
-
-struct Main: Codable {
-    let temp: Double
-}
-
-struct Weather: Codable {
-    let description: String
-    let id: Int
+struct WeatherData {
+    let conditionId: Int
+    let cityName: String
+    let temperature: Double
+    
+    var temperatureString: String {
+        return String(format: "%.1f", temperature)
+    }
+    
+    var conditionName: String {
+        switch conditionId {
+        case 200...232:
+            return "bolt"
+        case 300...321:
+            return "drizzle"
+        case 500...531:
+            return "rain"
+        case 600...622:
+            return "snow"
+        case 701...781:
+            return "fog"
+        case 800:
+            return "sunny"
+        case 801...804:
+            return "bolt"
+        default:
+            return "sad.sun"
+        }
+    }
 }

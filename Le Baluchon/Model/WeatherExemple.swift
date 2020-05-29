@@ -20,7 +20,7 @@ class WeatherExemple {
         case noData, incorrectResponse, undecodableData
     }
     
-    func getWeatherData(callback: @escaping (Result<WeatherData, NetworkError>) -> Void) {
+    func getWeatherData(callback: @escaping (Result<WeatherJSON, NetworkError>) -> Void) {
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric&q=Marseille") else { return }
         
         task?.cancel()
@@ -36,7 +36,7 @@ class WeatherExemple {
                 return
             }
             
-            guard let responseDecoded = try? JSONDecoder().decode(WeatherData.self, from: data) else {
+            guard let responseDecoded = try? JSONDecoder().decode(WeatherJSON.self, from: data) else {
                 callback(.failure(.undecodableData))
                 return
             }

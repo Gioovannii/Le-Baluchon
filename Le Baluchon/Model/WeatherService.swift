@@ -12,10 +12,7 @@ import CoreLocation
 class WeatherService {
     
     //MARK: - Properties
-     let weatherURL = URL(string: "https://api.openweathermap.org/data/2.5/weather?appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric")!
     
-    
-       
     let session: URLSession
     var task: URLSessionDataTask?
     
@@ -28,26 +25,26 @@ class WeatherService {
     }
     
     //MARK: - Fetch Methods
-    /// Get cityName
-    //    func fetchWeather(cityName: String) {
-    //        let urlString = "\(weatherURL)&q=\(cityName)"
-    //        performRequest(with: urlString)
-    //        print(urlString)
-    //    }
-    //
-    //    /// Fetch by location
+    
+    /// Fetch by location
     //    func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
     //        let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
-    //        performRequest(with: urlString)
+    //        print(urlString)
     //    }
     
-    
-   
     //MARK: - Network Call
-    func getWeatherData(callback: @escaping (Result<WeatherData, NetworkError>) -> Void) {
+    func getWeatherData(cityName: String, callback: @escaping (Result<WeatherData, NetworkError>) -> Void) {
+        
+        //        let city = cityName
+        //        city.replacingOccurrences(of: " ", with: "%20")
+        
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric&q=\(cityName)") else { return }
+        
+        
+        print(url)
         task?.cancel()
         // We give the session a task
-        task = session.dataTask(with: weatherURL) { data, response, error in
+        task = session.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 callback(.failure(.noData))
                 return
@@ -58,7 +55,7 @@ class WeatherService {
                 return
             }
             
-            guard let responseDecoded = try? JSONDecoder().decode(WeatherData.self, from: data) else {
+            guard let responseDecoded = self.parseJSON(data) else {
                 callback(.failure(.undecodableData))
                 return
             }
@@ -68,18 +65,18 @@ class WeatherService {
         task?.resume()
     }
     
-    func parseJSON(_ weatherData: Data) -> WeatherModel? {
+    /// take the response
+    func parseJSON(_ weatherData: Data) -> WeatherData? {
         let decoder = JSONDecoder()
         do {
-            let decoderData = try decoder.decode(WeatherData.self, from: weatherData)
+            let decoderData = try decoder.decode(WeatherJSON.self, from: weatherData)
             let id = decoderData.weather[0].id
             let temp = decoderData.main.temp
             let name = decoderData.name
             
-            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
+            let weather = WeatherData(conditionId: id, cityName: name, temperature: temp)
             return weather
         } catch {
-            
             print(error)
             return nil
         }
