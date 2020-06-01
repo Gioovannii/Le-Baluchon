@@ -20,7 +20,6 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var newYorkLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     
-    
     private var weatherService = WeatherService()
     private let locationManager = CLLocationManager()
     
@@ -47,7 +46,6 @@ final class WeatherViewController: UIViewController {
         //locationManager.startUpdatingLocation() to constant monitor the location
         locationManager.requestLocation()
         
-//        searchTextField.delegate = self
     }
 
     @IBAction func locationPressed(_ sender: UIButton) {
@@ -58,33 +56,6 @@ final class WeatherViewController: UIViewController {
         // Update Paris location
     }
 }
-
-////MARK: - UITextFieldDelegate
-//extension WeatherViewController: UITextFieldDelegate {
-//
-//    @IBAction func searchedPressed(_ sender: UIButton) { searchTextField.endEditing(true) }
-//
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        searchTextField.endEditing(true)
-//        guard let text = searchTextField.text else { return true }
-//        print(text)
-//        return true
-//    }
-//
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        if textField.text != "" {
-//            return true
-//        } else {
-//            textField.placeholder = "Type Something"
-//            return false
-//        }
-//    }
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        if let city = searchTextField.text { cityLabel.text = city }
-//        searchTextField.text = ""
-//    }
-//}
 
 //MARK: - LocationManagerDelegate
 extension WeatherViewController: CLLocationManagerDelegate {
