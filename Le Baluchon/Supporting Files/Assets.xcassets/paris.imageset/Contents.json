@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-chercher-30.png",
+      "filename" : "icons8-tour-eiffel-30.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-chercher-60.png",
+      "filename" : "icons8-tour-eiffel-60.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-chercher-90.png",
+      "filename" : "icons8-tour-eiffel-90.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

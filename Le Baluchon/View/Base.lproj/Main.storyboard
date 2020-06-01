@@ -34,10 +34,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="hor-Ma-Jnj">
-                                <rect key="frame" x="20" y="64" width="374" height="44"/>
+                                <rect key="frame" x="20" y="49" width="374" height="44"/>
                                 <items>
-                                    <navigationItem id="ztz-hz-DZA">
-                                        <nil key="title"/>
+                                    <navigationItem title="Weather" id="ztz-hz-DZA">
                                         <barButtonItem key="leftBarButtonItem" id="sgD-TW-OrV">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dpp-nD-g5W">
                                                 <rect key="frame" x="20" y="7" width="30" height="30"/>
@@ -48,23 +47,13 @@
                                                 </connections>
                                             </button>
                                         </barButtonItem>
-                                        <textField key="titleView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search city" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="IZv-P8-XcJ">
-                                            <rect key="frame" x="99" y="2" width="176" height="40"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="G2T-Yb-EQF"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="xaO-ye-9kI"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="go" smartDashesType="yes" textContentType="address-level2"/>
-                                        </textField>
-                                        <barButtonItem key="rightBarButtonItem" id="Pf3-Tc-Yc9">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QbK-6H-Rza">
+                                        <barButtonItem key="rightBarButtonItem" id="TaK-1j-aZg">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wRt-Os-AJT">
                                                 <rect key="frame" x="324" y="7" width="30" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="search"/>
+                                                <state key="normal" image="paris"/>
                                                 <connections>
-                                                    <action selector="searchedPressed:" destination="qNP-dB-KoB" eventType="touchUpInside" id="VtI-3B-9eA"/>
+                                                    <action selector="parisPressed:" destination="qNP-dB-KoB" eventType="touchUpInside" id="6aM-yF-MhA"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -72,14 +61,14 @@
                                 </items>
                             </navigationBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunny" translatesAutoresizingMaskIntoConstraints="NO" id="MKa-4t-8ut">
-                                <rect key="frame" x="20" y="128" width="140" height="145"/>
+                                <rect key="frame" x="20" y="113" width="140" height="145"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="MKa-4t-8ut" secondAttribute="height" multiplier="1:1" constant="-5" id="Qru-fL-naq"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7j2-z5-k4A">
-                                <rect key="frame" x="144" y="128" width="250" height="145"/>
+                                <rect key="frame" x="144" y="113" width="250" height="145"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="6" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E11-zM-Sab">
                                         <rect key="frame" x="0.0" y="31.999999999999993" width="181.66666666666666" height="81.333333333333314"/>
@@ -105,7 +94,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Paris" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdJ-2R-dDY">
-                                <rect key="frame" x="20" y="349.66666666666669" width="374" height="50.333333333333314"/>
+                                <rect key="frame" x="20" y="278" width="374" height="50.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -146,7 +135,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzE-Ww-p9P">
-                                <rect key="frame" x="20" y="580.33333333333337" width="374" height="70"/>
+                                <rect key="frame" x="20" y="581.33333333333337" width="374" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="con-NQ-XxA"/>
                                 </constraints>
@@ -156,6 +145,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.82904583220000005" green="0.93854004140000002" blue="0.98653823139999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4S8-jb-P9S" firstAttribute="trailing" secondItem="7j2-z5-k4A" secondAttribute="trailing" id="2Eq-My-gRh"/>
                             <constraint firstItem="RdJ-2R-dDY" firstAttribute="trailing" secondItem="7j2-z5-k4A" secondAttribute="trailing" id="4cH-lF-Ysf"/>
@@ -168,14 +158,14 @@
                             <constraint firstItem="4S8-jb-P9S" firstAttribute="centerY" secondItem="Csb-nI-CeK" secondAttribute="centerY" id="TBl-rN-PuR"/>
                             <constraint firstItem="WjB-Ot-D8Q" firstAttribute="trailing" secondItem="MKa-4t-8ut" secondAttribute="trailing" constant="254" id="UC8-fe-MdI"/>
                             <constraint firstItem="xzE-Ww-p9P" firstAttribute="trailing" secondItem="7j2-z5-k4A" secondAttribute="trailing" id="YVi-fq-wvx"/>
-                            <constraint firstItem="4S8-jb-P9S" firstAttribute="top" secondItem="xzE-Ww-p9P" secondAttribute="bottom" constant="21" id="bFt-UX-MxG"/>
+                            <constraint firstItem="4S8-jb-P9S" firstAttribute="top" secondItem="xzE-Ww-p9P" secondAttribute="bottom" constant="20" id="bFt-UX-MxG"/>
                             <constraint firstItem="RdJ-2R-dDY" firstAttribute="leading" secondItem="WjB-Ot-D8Q" secondAttribute="leading" constant="20" id="gFv-vn-7pO"/>
                             <constraint firstItem="MKa-4t-8ut" firstAttribute="top" secondItem="hor-Ma-Jnj" secondAttribute="bottom" constant="20" id="guj-OT-gmp"/>
                             <constraint firstItem="MKa-4t-8ut" firstAttribute="trailing" secondItem="7j2-z5-k4A" secondAttribute="trailing" constant="-234" id="h8n-fg-AMg"/>
                             <constraint firstItem="WjB-Ot-D8Q" firstAttribute="trailing" secondItem="hor-Ma-Jnj" secondAttribute="trailing" constant="20" id="hhb-AJ-gh3"/>
                             <constraint firstItem="Csb-nI-CeK" firstAttribute="leading" secondItem="WjB-Ot-D8Q" secondAttribute="leading" constant="20" id="o4w-Co-ryB"/>
-                            <constraint firstItem="hor-Ma-Jnj" firstAttribute="top" secondItem="WjB-Ot-D8Q" secondAttribute="top" constant="20" id="p4C-e9-RB5"/>
-                            <constraint firstItem="RdJ-2R-dDY" firstAttribute="top" secondItem="MKa-4t-8ut" secondAttribute="bottom" constant="76.5" id="t4b-xD-7ov"/>
+                            <constraint firstItem="hor-Ma-Jnj" firstAttribute="top" secondItem="WjB-Ot-D8Q" secondAttribute="top" constant="5" id="p4C-e9-RB5"/>
+                            <constraint firstItem="RdJ-2R-dDY" firstAttribute="top" secondItem="MKa-4t-8ut" secondAttribute="bottom" constant="20" id="t4b-xD-7ov"/>
                             <constraint firstItem="Csb-nI-CeK" firstAttribute="trailing" secondItem="7j2-z5-k4A" secondAttribute="trailing" constant="-230" id="usZ-SN-3ME"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WjB-Ot-D8Q"/>
@@ -185,9 +175,10 @@
                     <connections>
                         <outlet property="cityLabel" destination="RdJ-2R-dDY" id="gMX-gW-LpM"/>
                         <outlet property="conditionImageView" destination="MKa-4t-8ut" id="92U-MP-UTg"/>
+                        <outlet property="conditionNewYorkImageView" destination="Csb-nI-CeK" id="kee-Z0-T3s"/>
                         <outlet property="newYorkLabel" destination="xzE-Ww-p9P" id="8gG-eJ-KC6"/>
-                        <outlet property="searchTextField" destination="IZv-P8-XcJ" id="vxi-Hi-qUm"/>
                         <outlet property="temperatureLabel" destination="E11-zM-Sab" id="H0v-iR-yEW"/>
+                        <outlet property="temperatureNewYorkLabel" destination="uqH-dZ-66B" id="4vq-dd-UFZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df0-fc-3R4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -197,8 +188,8 @@
     </scenes>
     <resources>
         <image name="icon.nav" width="50" height="50"/>
+        <image name="paris" width="30" height="30"/>
         <image name="position" width="30" height="30"/>
-        <image name="search" width="30" height="30"/>
         <image name="sunny" width="50" height="50"/>
     </resources>
 </document>

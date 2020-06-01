@@ -9,14 +9,19 @@
 import Foundation
 
 struct WeatherJSON: Codable {
+    let list: [List]
+}
+
+struct List: Codable {
     let name: String
-    let main: Main
     let weather: [Weather]
+    let main: Main
 }
 
 struct Main: Codable {
     let temp: Double
 }
+
 
 struct Weather: Codable {
     let description: String

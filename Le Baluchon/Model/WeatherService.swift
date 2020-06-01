@@ -27,19 +27,19 @@ class WeatherService {
     //MARK: - Fetch Methods
     
     /// Fetch by location
-    //    func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-    //        let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
-    //        print(urlString)
-    //    }
+        func getCoordinate(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+            let localisation = "&lat=\(latitude)&lon=\(longitude)"
+            print(localisation)
+        }
     
     //MARK: - Network Call
-    func getWeatherData(cityName: String, callback: @escaping (Result<WeatherData, NetworkError>) -> Void) {
+    func getWeatherData(callback: @escaping (Result<WeatherData, NetworkError>) -> Void) {
+        let newYork = "5128581"
+        let paris = "2C2968815"
         
-        //        let city = cityName
-        //        city.replacingOccurrences(of: " ", with: "%20")
+      //  guard let urlString = cityName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric&q=\(cityName)") else { return }
-        
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?id=\(newYork)%\(paris)&appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric") else { return }
         
         print(url)
         task?.cancel()
@@ -65,17 +65,27 @@ class WeatherService {
         task?.resume()
     }
     
-    /// take the response
+    /// take the response then handle errors
     func parseJSON(_ weatherData: Data) -> WeatherData? {
         let decoder = JSONDecoder()
         do {
             let decoderData = try decoder.decode(WeatherJSON.self, from: weatherData)
-            let id = decoderData.weather[0].id
-            let temp = decoderData.main.temp
-            let name = decoderData.name
+            let id = decoderData.list[0].weather[0].id
+            let temp = decoderData.list[0].main.temp
+            let name = decoderData.list[0].name
             
+            let idParis = decoderData.list[1].weather[0].id
+            let tempParis = decoderData.list[1].main.temp
+            let nameParis = decoderData.list[1].name
+            
+           
             let weather = WeatherData(conditionId: id, cityName: name, temperature: temp)
+            let weatherParis = WeatherData(conditionId: idParis, cityName: nameParis, temperature: tempParis)
+            
+//            let myData = [weather, weatherParis]
+            print(weatherParis)
             return weather
+            
         } catch {
             print(error)
             return nil
