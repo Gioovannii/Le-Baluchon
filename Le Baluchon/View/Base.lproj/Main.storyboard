@@ -39,23 +39,13 @@
                                     <navigationItem title="Weather" id="ztz-hz-DZA">
                                         <barButtonItem key="leftBarButtonItem" id="sgD-TW-OrV">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dpp-nD-g5W">
-                                                <rect key="frame" x="20" y="7" width="30" height="30"/>
+                                                <rect key="frame" x="20" y="0.0" width="50" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="position"/>
-                                                <connections>
-                                                    <action selector="locationPressed:" destination="qNP-dB-KoB" eventType="touchUpInside" id="Obh-Rh-gDo"/>
-                                                </connections>
                                             </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" id="TaK-1j-aZg">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wRt-Os-AJT">
-                                                <rect key="frame" x="324" y="7" width="30" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="paris"/>
-                                                <connections>
-                                                    <action selector="parisPressed:" destination="qNP-dB-KoB" eventType="touchUpInside" id="6aM-yF-MhA"/>
-                                                </connections>
-                                            </button>
+                                            <connections>
+                                                <action selector="refreshPressed:" destination="qNP-dB-KoB" id="mbc-cL-C1V"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -188,7 +178,6 @@
     </scenes>
     <resources>
         <image name="icon.nav" width="50" height="50"/>
-        <image name="paris" width="30" height="30"/>
         <image name="position" width="30" height="30"/>
         <image name="sunny" width="50" height="50"/>
     </resources>

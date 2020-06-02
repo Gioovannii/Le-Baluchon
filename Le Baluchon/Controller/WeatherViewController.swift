@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreLocation
 
 final class WeatherViewController: UIViewController {
     
@@ -18,10 +17,8 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var conditionNewYorkImageView: UIImageView!
     @IBOutlet weak var temperatureNewYorkLabel: UILabel!
     @IBOutlet weak var newYorkLabel: UILabel!
-    @IBOutlet weak var searchTextField: UITextField!
     
     private var weatherService = WeatherService()
-    private let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,47 +26,34 @@ final class WeatherViewController: UIViewController {
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
-                    self.temperatureNewYorkLabel.text = data.temperatureString
-                    self.conditionNewYorkImageView.image = UIImage(imageLiteralResourceName: data.conditionName)
-                    self.newYorkLabel.text = data.cityName
-                    
-                    self.temperatureLabel.text = data.temperatureString
+                    self.update(weather: data)
                     print(data)
-
                 }
             case .failure(let error):
                 print(error)
+                self.presentAlert()
             }
         }
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        //locationManager.startUpdatingLocation() to constant monitor the location
-        locationManager.requestLocation()
+    }
+   
+    @IBAction func refreshPressed(_ sender: UIBarButtonItem) {
         
     }
-
-    @IBAction func locationPressed(_ sender: UIButton) {
-        cityLabel.text = "Loading..."
-        locationManager.requestLocation()
-    }
-    @IBAction func parisPressed(_ sender: UIButton) {
-        // Update Paris location
-    }
-}
-
-//MARK: - LocationManagerDelegate
-extension WeatherViewController: CLLocationManagerDelegate {
-    // Get location by giving to the model then fetch via network Call
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last  {
-            locationManager.stopUpdatingLocation()
-            let lat = location.coordinate.latitude
-            let lon = location.coordinate.longitude
-            print("latitude = \(lat), longitude = \(lon)")
-        }
+    
+    private func update(weather: WeatherData) {
+        cityLabel.text = weather.cityNameParis
+        temperatureLabel.text = weather.temperatureS
+        conditionImageView.image = UIImage(imageLiteralResourceName: weather.conditionNameParis)
+        
+        newYorkLabel.text = weather.cityName
+        temperatureNewYorkLabel.text = weather.temperatureString
+        conditionNewYorkImageView.image = UIImage(imageLiteralResourceName: weather.conditionName)
+        
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+    func presentAlert() {
+        let alertVC = UIAlertController(title: "Heyyy", message: "Your request has gone wrong", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
     }
 }
