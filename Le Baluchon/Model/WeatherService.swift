@@ -9,7 +9,7 @@
 import Foundation
 
 class WeatherService {
-    //MARK: - Properties
+    //MARK: - Properties.
     let session: URLSession
     var task: URLSessionDataTask?
     
@@ -22,12 +22,12 @@ class WeatherService {
     }
     
    
-    //MARK: - Network Call
+    //MARK: - Network Call.
     func getWeatherData(callback: @escaping (Result<WeatherData, NetworkError>) -> Void) {
-        let newYork = "group?id=5128581"
+        let newYork = "5128581"
         let paris = "2C2968815"
 
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/\(newYork)%\(paris)&appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric") else { return }
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?id=\(newYork)%\(paris)&appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric") else { return }
 
         print(url)
         task?.cancel()
@@ -53,7 +53,7 @@ class WeatherService {
         task?.resume()
     }
     
-    //MARK: - parse Safely
+    //MARK: - parse Safely.
     /// take the response then handle errors
     func parseJSON(_ weatherData: Data) -> WeatherData? {
         let decoder = JSONDecoder()
@@ -64,10 +64,9 @@ class WeatherService {
             let temp = decoderData.list[0].main.temp
             let name = decoderData.list[0].name
             
-            let idParis = decoderData.list[1].weather[1].id
+            let idParis = decoderData.list[1].weather[0].id
             let tempParis = decoderData.list[1].main.temp
             let nameParis = decoderData.list[1].name
-            
             
             let weather = WeatherData(conditionId: id, cityName: name, temperature: temp, conditionIdParis: idParis, cityNameParis: nameParis, temperatureParis: tempParis)
 

@@ -42,13 +42,12 @@ final class WeatherViewController: UIViewController {
     
     private func update(weather: WeatherData) {
         cityLabel.text = weather.cityNameParis
-        temperatureLabel.text = weather.temperatureS
+        temperatureLabel.text = weather.temperatureStringParis
         conditionImageView.image = UIImage(imageLiteralResourceName: weather.conditionNameParis)
         
         newYorkLabel.text = weather.cityName
         temperatureNewYorkLabel.text = weather.temperatureString
         conditionNewYorkImageView.image = UIImage(imageLiteralResourceName: weather.conditionName)
-        
     }
     
     func presentAlert() {

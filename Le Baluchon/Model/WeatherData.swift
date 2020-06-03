@@ -22,7 +22,7 @@ struct WeatherData {
         return String(format: "%.1f", temperature)
     }
     
-    var temperatureS: String {
+    var temperatureStringParis: String {
         return String(format: "%.1f", temperatureParis)
     }
     
