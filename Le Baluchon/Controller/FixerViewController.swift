@@ -9,10 +9,13 @@
 import UIKit
 
 class FixerViewController: UIViewController {
-
+    @IBOutlet weak var amountTextField: UITextField!
+    @IBOutlet weak var answerLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      
+    }
+    @IBAction func convertPressed(_ sender: UIButton) {
+        
     }
 }

@@ -21,7 +21,7 @@ class WeatherService {
         case noData, incorrectResponse, undecodableData
     }
     
-   
+    
     //MARK: - Network Call.
     func getWeatherData(callback: @escaping (Result<WeatherData, NetworkError>) -> Void) {
         let newYork = "5128581"
@@ -29,7 +29,7 @@ class WeatherService {
         let apiKey = "appid=17121490b9e3ea8f4d54dc0b563f9fb2"
         
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?id=\(newYork)%\(paris)&\(apiKey)&units=metric") else { return }
-
+        
         print(url)
         task?.cancel()
         // We give the session a task
@@ -70,7 +70,7 @@ class WeatherService {
             let nameParis = decoderData.list[1].name
             
             let weather = WeatherData(conditionId: id, cityName: name, temperature: temp, conditionIdParis: idParis, cityNameParis: nameParis, temperatureParis: tempParis)
-
+            
             return weather
             
         } catch {
