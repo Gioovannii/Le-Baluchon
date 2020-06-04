@@ -26,8 +26,9 @@ class WeatherService {
     func getWeatherData(callback: @escaping (Result<WeatherData, NetworkError>) -> Void) {
         let newYork = "5128581"
         let paris = "2C2968815"
-
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?id=\(newYork)%\(paris)&appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric") else { return }
+        let apiKey = "appid=17121490b9e3ea8f4d54dc0b563f9fb2"
+        
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?id=\(newYork)%\(paris)&\(apiKey)&units=metric") else { return }
 
         print(url)
         task?.cancel()

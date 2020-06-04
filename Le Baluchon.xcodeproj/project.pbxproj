@@ -12,6 +12,7 @@
 		040FD9A62486865600B80C8E /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FD9A52486865600B80C8E /* FakeResponseData.swift */; };
 		040FD9A8248686AA00B80C8E /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FD9A7248686AA00B80C8E /* URLSessionFake.swift */; };
 		0495BDF124795DC1000679D9 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0495BDF024795DC1000679D9 /* WeatherViewController.swift */; };
+		049856662488A6BA006F1ACD /* FixerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049856652488A6BA006F1ACD /* FixerViewController.swift */; };
 		04C6A0832478D0A300F3975E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C6A0822478D0A300F3975E /* AppDelegate.swift */; };
 		04C6A0852478D0A300F3975E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C6A0842478D0A300F3975E /* SceneDelegate.swift */; };
 		04C6A08A2478D0A300F3975E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C6A0882478D0A300F3975E /* Main.storyboard */; };
@@ -33,13 +34,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		040FD999248685AD00B80C8E /* Le BaluchonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Le BaluchonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		040FD999248685AD00B80C8E /* Le BaluchonTests */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Le BaluchonTests"; path = "../../../../../../../../Desktop/Le Baluchon/Le BaluchonTests"; sourceTree = BUILT_PRODUCTS_DIR; };
 		040FD99B248685AD00B80C8E /* WeatherServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTestCase.swift; sourceTree = "<group>"; };
 		040FD99D248685AD00B80C8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		040FD9A32486861500B80C8E /* Weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Weather.json; sourceTree = "<group>"; };
 		040FD9A52486865600B80C8E /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		040FD9A7248686AA00B80C8E /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
 		0495BDF024795DC1000679D9 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		049856652488A6BA006F1ACD /* FixerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixerViewController.swift; sourceTree = "<group>"; };
 		04C6A07F2478D0A300F3975E /* Le Baluchon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Le Baluchon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C6A0822478D0A300F3975E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04C6A0842478D0A300F3975E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				04C6A07F2478D0A300F3975E /* Le Baluchon.app */,
-				040FD999248685AD00B80C8E /* Le BaluchonTests.xctest */,
+				040FD999248685AD00B80C8E /* Le BaluchonTests */,
 			);
 			name = Products;
 			path = "Le BaluchonTests";
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				0495BDF024795DC1000679D9 /* WeatherViewController.swift */,
+				049856652488A6BA006F1ACD /* FixerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -176,7 +179,7 @@
 			);
 			name = "Le BaluchonTests";
 			productName = "Le BaluchonTests";
-			productReference = 040FD999248685AD00B80C8E /* Le BaluchonTests.xctest */;
+			productReference = 040FD999248685AD00B80C8E /* Le BaluchonTests */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		04C6A07E2478D0A300F3975E /* Le Baluchon */ = {
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0495BDF124795DC1000679D9 /* WeatherViewController.swift in Sources */,
+				049856662488A6BA006F1ACD /* FixerViewController.swift in Sources */,
 				04D983E3247A712800ED1852 /* WeatherService.swift in Sources */,
 				04D983E7247A76F000ED1852 /* WeatherData.swift in Sources */,
 				04C6A0832478D0A300F3975E /* AppDelegate.swift in Sources */,

@@ -43,7 +43,7 @@ struct WeatherData {
         case 801...804:
             return "bolt"
         default:
-            return "sad.sun"
+            return "cloud"
         }
     }
     
@@ -64,7 +64,7 @@ struct WeatherData {
            case 801...804:
                return "bolt"
            default:
-               return "sad.sun"
+               return "cloud"
            }
        }
 }
