@@ -8,7 +8,6 @@
 
 import Foundation
 
-struct DataFixer {
-    
+struct FixerData: Codable {
     let rates: [String: Double]
 }

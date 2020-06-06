@@ -40,6 +40,7 @@ final class WeatherViewController: UIViewController {
         
     }
     
+    
     private func update(weather: WeatherData) {
         cityLabel.text = weather.cityNameParis
         temperatureLabel.text = weather.temperatureStringParis

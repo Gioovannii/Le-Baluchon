@@ -16,6 +16,16 @@ class FixerViewController: UIViewController {
         super.viewDidLoad()
     }
     @IBAction func convertPressed(_ sender: UIButton) {
-        
+        FixerService().getCurrency { result in
+            switch result {
+            case .success(let data):
+                
+                DispatchQueue.main.async {
+                    print(data)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
