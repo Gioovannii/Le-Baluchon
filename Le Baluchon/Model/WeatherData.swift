@@ -9,6 +9,8 @@
 import Foundation
 
 struct WeatherData {
+    
+    // MARK: - Properties
     let conditionId: Int
     let cityName: String
     let temperature: Double
@@ -17,17 +19,17 @@ struct WeatherData {
     let cityNameParis: String
     let temperatureParis: Double
     
+    // Convert temperature into String to one decimal number
+    var temperatureString: String { return String(format: "%.1f", temperature) }
+    var temperatureStringParis: String { return String(format: "%.1f", temperatureParis) }
     
-    var temperatureString: String {
-        return String(format: "%.1f", temperature)
-    }
+    // check with calculate properties which value should be return to set imageView
+    var conditionName: String { getCondition(to: conditionId) }
+    var conditionNameParis: String { getCondition(to: conditionIdParis) }
     
-    var temperatureStringParis: String {
-        return String(format: "%.1f", temperatureParis)
-    }
-    
-    var conditionName: String {
-        switch conditionId {
+    // Check the weather then give back image to show
+    func getCondition(to id: Int) -> String {
+        switch id {
         case 200...232:
             return "bolt"
         case 300...321:
@@ -46,25 +48,4 @@ struct WeatherData {
             return "cloud"
         }
     }
-    
-    var conditionNameParis: String {
-           switch  conditionIdParis {
-           case 200...232:
-               return "bolt"
-           case 300...321:
-               return "drizzle"
-           case 500...531:
-               return "rain"
-           case 600...622:
-               return "snow"
-           case 701...781:
-               return "fog"
-           case 800:
-               return "sunny"
-           case 801...804:
-               return "bolt"
-           default:
-               return "cloud"
-           }
-       }
 }

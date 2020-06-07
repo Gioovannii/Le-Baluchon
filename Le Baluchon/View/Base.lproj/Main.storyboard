@@ -140,7 +140,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfa-Vv-X67" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="273.91304347826087" y="-529.01785714285711"/>
+            <point key="canvasLocation" x="287" y="-529"/>
         </scene>
         <!--Weather-->
         <scene sceneID="uNi-H4-CbU">
@@ -154,7 +154,7 @@
                                 <rect key="frame" x="20" y="49" width="374" height="44"/>
                                 <items>
                                     <navigationItem title="Weather" id="ztz-hz-DZA">
-                                        <barButtonItem key="leftBarButtonItem" id="sgD-TW-OrV">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="load" id="sgD-TW-OrV">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dpp-nD-g5W">
                                                 <rect key="frame" x="20" y="0.0" width="50" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

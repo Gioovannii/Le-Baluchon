@@ -108,13 +108,19 @@ class WeatherServiceTestCase: XCTestCase {
                 XCTFail("testGetWeatherShouldPostSuccesCallbackIfNoErrorAndCorrectData Success")
                 return
             }
-            XCTAssertEqual(data.cityName, "New York")
-            XCTAssertEqual(data.temperature, 16.4)
-            XCTAssertEqual(data.conditionId, 800)
+//            XCTAssertEqual(data.cityName, "New York")
+//            XCTAssertEqual(data.temperature, 16.4)
+            XCTAssertEqual(data.temperatureString, "16.4")
+//            XCTAssertEqual(data.conditionId, 800)
+            XCTAssertEqual(data.conditionName, "sunny")
+            XCTAssertEqual(data.getCondition(to: data.conditionId), "sunny")
             
-            XCTAssertEqual(data.cityNameParis, "Paris")
-            XCTAssertEqual(data.temperatureParis, 27.81)
-            XCTAssertEqual(data.conditionIdParis, 800)
+//            
+//            XCTAssertEqual(data.cityNameParis, "Paris")
+//            XCTAssertEqual(data.temperatureParis, 27.81)
+            XCTAssertEqual(data.temperatureStringParis, "27.8")
+//            XCTAssertEqual(data.conditionIdParis, 800)
+            XCTAssertEqual(data.conditionNameParis, "sunny")
             
             //Then
             expectation.fulfill()

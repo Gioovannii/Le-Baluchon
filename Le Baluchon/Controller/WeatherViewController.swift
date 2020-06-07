@@ -38,6 +38,7 @@ final class WeatherViewController: UIViewController {
     
     @IBAction func refreshPressed(_ sender: UIBarButtonItem) {
         
+        print("touch")
     }
     
     
