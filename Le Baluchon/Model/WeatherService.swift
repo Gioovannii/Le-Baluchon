@@ -32,7 +32,7 @@ class WeatherService {
         
         print(url)
         task?.cancel()
-        // We give the session a task
+        // Give the session a task
         task = session.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else {
                 callback(.failure(.noData))

@@ -22,20 +22,24 @@ final class WeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        WeatherService().getWeatherData() { result in
-            switch result {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    self.update(weather: data)
-                    print(data)
-                }
-            case .failure(let error):
-                print(error)
-                self.presentAlert()
-            }
-        }
+     
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        WeatherService().getWeatherData() { result in
+                   switch result {
+                   case .success(let data):
+                       DispatchQueue.main.async {
+                           self.update(weather: data)
+                           print(data)
+                       }
+                   case .failure(let error):
+                       print(error)
+                       self.presentAlert()
+                   }
+               }
+    }
     @IBAction func refreshPressed(_ sender: UIBarButtonItem) {
         
         print("touch")

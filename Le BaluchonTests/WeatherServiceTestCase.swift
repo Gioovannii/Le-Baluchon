@@ -96,36 +96,5 @@ class WeatherServiceTestCase: XCTestCase {
         
         wait(for: [expectation], timeout: 0.01)
     }
-    
-    func testGetWeatherShouldPostSuccesCallbackIfNoErrorAndCorrectData() {
-        // Given
-        let weather = WeatherService(session: URLSessionFake(data: FakeResponseData.weatherCorrectData, response: FakeResponseData.responseOK, error: nil))
-        
-        //When
-        let expectation = XCTestExpectation(description: "Wait for queu change")
-        weather.getWeatherData { result in
-            guard case .success(let data) = result else {
-                XCTFail("testGetWeatherShouldPostSuccesCallbackIfNoErrorAndCorrectData Success")
-                return
-            }
-//            XCTAssertEqual(data.cityName, "New York")
-//            XCTAssertEqual(data.temperature, 16.4)
-            XCTAssertEqual(data.temperatureString, "16.4")
-//            XCTAssertEqual(data.conditionId, 800)
-            XCTAssertEqual(data.conditionName, "sunny")
-            XCTAssertEqual(data.getCondition(to: data.conditionId), "sunny")
-            
-//            
-//            XCTAssertEqual(data.cityNameParis, "Paris")
-//            XCTAssertEqual(data.temperatureParis, 27.81)
-            XCTAssertEqual(data.temperatureStringParis, "27.8")
-//            XCTAssertEqual(data.conditionIdParis, 800)
-            XCTAssertEqual(data.conditionNameParis, "sunny")
-            
-            //Then
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 0.01)
-    }
 }
+

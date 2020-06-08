@@ -8,6 +8,11 @@
 
 import Foundation
 
-struct FixerData: Codable {
-    let rates: [String: Double]
+struct FixerJSON: Codable {
+    let rates: [Rate]
+}
+
+struct Rate: Codable {
+    let USD: Double
+   
 }
