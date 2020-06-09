@@ -30,7 +30,6 @@ class WeatherService {
         
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?id=\(newYork)%\(paris)&\(apiKey)&units=metric") else { return }
         
-        print(url)
         task?.cancel()
         // Give the session a task
         task = session.dataTask(with: url) { data, response, error in

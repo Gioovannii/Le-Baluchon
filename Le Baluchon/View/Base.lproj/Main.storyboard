@@ -83,6 +83,9 @@
                                         <rect key="frame" x="0.0" y="28.5" width="150" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="amountTextField:" destination="6E8-36-c8C" eventType="editingDidEnd" id="6qG-3g-N28"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -159,10 +162,10 @@
                                                 <rect key="frame" x="20" y="0.0" width="50" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="load"/>
+                                                <connections>
+                                                    <action selector="refreshPressed:" destination="qNP-dB-KoB" eventType="touchUpInside" id="UwX-yW-Kgl"/>
+                                                </connections>
                                             </button>
-                                            <connections>
-                                                <action selector="refreshPressed:" destination="qNP-dB-KoB" id="mbc-cL-C1V"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
