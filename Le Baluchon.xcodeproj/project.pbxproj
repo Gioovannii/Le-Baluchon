@@ -116,7 +116,6 @@
 				04C6A0A42478D10400F3975E /* Supporting Files */,
 				04C6A0A52478D10800F3975E /* Model */,
 				04C6A0A72478D10800F3975E /* View */,
-				04C6A0A62478D10800F3975E /* ViewModel */,
 				04C6A0AA2478D69A00F3975E /* Controller */,
 			);
 			path = "Le Baluchon";
@@ -144,13 +143,6 @@
 				0426BCB92489130D00E48D04 /* FixerJSON.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		04C6A0A62478D10800F3975E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		04C6A0A72478D10800F3975E /* View */ = {

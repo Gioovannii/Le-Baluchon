@@ -48,14 +48,9 @@ final class FixerService {
                 callback(.failure(.undecodableData))
                 return
             }
-            print("Fom model:",usd)
             callback(.success(usd))
         }
         // start task
         task?.resume()
-    }
-    
-     func convertToDollars(amount: Double, rate: Double) -> Double {
-        return amount * rate
     }
 }

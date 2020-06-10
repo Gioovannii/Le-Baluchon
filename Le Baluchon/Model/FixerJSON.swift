@@ -11,4 +11,3 @@ import Foundation
 struct FixerData: Decodable {
     let rates: [String: Double]
 }
-

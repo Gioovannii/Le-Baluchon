@@ -82,10 +82,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SxC-ff-0UP">
                                         <rect key="frame" x="0.0" y="28.5" width="150" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="amountTextField:" destination="6E8-36-c8C" eventType="editingDidEnd" id="6qG-3g-N28"/>
-                                        </connections>
+                                        <textInputTraits key="textInputTraits" textContentType="cc-number"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -114,7 +111,7 @@
                                 </constraints>
                                 <state key="normal" image="fleche.droite"/>
                                 <connections>
-                                    <action selector="convertPressed:" destination="6E8-36-c8C" eventType="touchUpInside" id="iJT-hJ-5Nt"/>
+                                    <action selector="convertPressed:" destination="6E8-36-c8C" eventType="touchUpInside" id="6pg-af-mhN"/>
                                 </connections>
                             </button>
                         </subviews>
