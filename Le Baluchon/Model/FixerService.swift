@@ -22,12 +22,12 @@ final class FixerService {
     }
     
     //MARK: - Network Call.
-    func getCurrency(devise: String, callback: @escaping (Result<Double, NetworkError>) -> Void) {
+    func getCurrency(currency: String, callback: @escaping (Result<Double, NetworkError>) -> Void) {
         let baseUrl = "http://data.fixer.io/api/latest?access_key="
         let apiAccessKey =  "173e725be7b0231e46c4f70d08b278eb"
-        let currency = "&symbols=USD&format=1"
+        let usd = "&symbols=USD&format=1"
         
-        guard let url = URL(string: "\(baseUrl)\(apiAccessKey)&\(currency)") else { return }
+        guard let url = URL(string: "\(baseUrl)\(apiAccessKey)&\(usd)") else { return }
         
         print(url)
         task?.cancel()
@@ -44,7 +44,7 @@ final class FixerService {
             }
             
             guard let responseDecoded = try? JSONDecoder().decode(FixerData.self, from: data),
-                let usd = responseDecoded.rates[devise] else {
+                let usd = responseDecoded.rates[currency] else {
                 callback(.failure(.undecodableData))
                 return
             }

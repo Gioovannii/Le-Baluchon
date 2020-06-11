@@ -28,10 +28,13 @@ final class WeatherViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         networkCall()
+        presentAlert(title: "You're back here", message: "Here we go. We update your city weather")
     }
     
     @IBAction func refreshPressed(_ sender: Any) {
         networkCall()
+        print("touch reload")
+        presentAlert(title: "Reload", message: "Here we go reload done!")
     }
     
     func networkCall() {
@@ -44,7 +47,7 @@ final class WeatherViewController: UIViewController {
                 }
             case .failure(let error):
                 print(error)
-                self.presentAlert()
+                self.presentAlert(title: "Heyyy", message: "Your request has gone wrong")
             }
         }
     }
@@ -59,9 +62,9 @@ final class WeatherViewController: UIViewController {
         conditionNewYorkImageView.image = UIImage(imageLiteralResourceName: weather.conditionName)
     }
     
-    func presentAlert() {
-        let alertVC = UIAlertController(title: "Heyyy", message: "Your request has gone wrong", preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alertVC, animated: true, completion: nil)
+    func presentAlert(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Continue", style: .cancel))
+        self.present(alertVC, animated: true)
     }
 }

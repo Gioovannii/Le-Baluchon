@@ -8,10 +8,16 @@
 
 import UIKit
 
-class FixerViewController: UIViewController {
+final class FixerViewController: UIViewController {
+    /// Stack overflow link many dev enconter the same problem
+    //https://stackoverflow.com/questions/32647090/cant-find-keyplane-that-supports-type-4-for-keyboard-iphone-portrait-numberpad/34126463
+    
+    // MARK: - Outlet
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var answerLabel: UILabel!
     
+    
+    // MARK: - Properties
     var amount: Double = 0.00
     var amountString: String {
         return String(format: "%.0f", amount)
@@ -20,20 +26,34 @@ class FixerViewController: UIViewController {
     var rate: Double = 0.00
     var answer : Double = 0.00
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(FixerViewController.keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
+        NotificationCenter.default.addObserver(self, selector: #selector(FixerViewController.keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
     
+    
+    
+    // MARK: - Action
+    /// Network call
+    /// - Parameter sender: UI Button pressed
     @IBAction func convertPressed(_ sender: UIButton) {
         amountTextField.resignFirstResponder()
-        FixerService().getCurrency(devise: "USD") { result in
+        FixerService().getCurrency(currency: "USD") { result in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
                     
                     self.rate = data
                     print(self.rate)
-
+                    
                     guard let result = self.updateResult(self.amount, self.rate) else { return }
                     var resultString: String {
                         return String(format: "%.3f", result)
@@ -48,7 +68,28 @@ class FixerViewController: UIViewController {
             }
         }
     }
+}
+
+extension FixerViewController {
+    // MARK: - @objc method to show and hide
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            // if keyboard size is not available for some reason, dont do anything
+            return
+        }
+        
+        // move the root view up by the distance of keyboard's height
+        self.view.frame.origin.y = 180 - keyboardSize.height
+    }
     
+    @objc func keyboardWillHide(notification: NSNotification) {
+        // move back the root view origin to zero
+        self.view.frame.origin.y = 0
+    }
+}
+
+// MARK: - convert and update
+extension FixerViewController {
     private func convertResponseToDouble() -> Double {
         guard let amountString = amountTextField.text else { return 0 }
         guard let DoubleString = Int(amountString) else { return 0 }
