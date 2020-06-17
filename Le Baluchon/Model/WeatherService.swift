@@ -7,6 +7,9 @@
 //
 
 import Foundation
+enum NetworkError: Error {
+      case noData, incorrectResponse, undecodableData
+  }
 
 class WeatherService {
     //MARK: - Properties.
@@ -17,14 +20,10 @@ class WeatherService {
         self.session = session
     }
     
-    enum NetworkError: Error {
-        case noData, incorrectResponse, undecodableData
-    }
-    
+   
     
     //MARK: - Network Call.
     func getWeatherData(callback: @escaping (Result<WeatherData, NetworkError>) -> Void) {
-        
         
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?id=5128581%2C2968815&appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric") else { return }
         

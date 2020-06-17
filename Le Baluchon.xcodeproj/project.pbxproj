@@ -23,7 +23,10 @@
 		04D983E3247A712800ED1852 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D983E2247A712800ED1852 /* WeatherService.swift */; };
 		04D983E5247A74B600ED1852 /* WeatherJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D983E4247A74B500ED1852 /* WeatherJSON.swift */; };
 		04D983E7247A76F000ED1852 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D983E6247A76F000ED1852 /* WeatherData.swift */; };
+		7B40DF1124948270001126D4 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B40DF1024948270001126D4 /* TranslationService.swift */; };
+		7B40DF132495CB57001126D4 /* FixerServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B40DF122495CB57001126D4 /* FixerServiceTestCase.swift */; };
 		7B4DFA2B248E298F00DE7340 /* WeatherDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DFA2A248E298F00DE7340 /* WeatherDataTestCase.swift */; };
+		7B5CE5F624936EE8006B6259 /* Fixer.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B5CE5F524936EE8006B6259 /* Fixer.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		040FD999248685AD00B80C8E /* Le BaluchonTests */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Le BaluchonTests"; path = "../../../../../../../../Documents/Le-Baluchon/Le BaluchonTests"; sourceTree = BUILT_PRODUCTS_DIR; };
+		040FD999248685AD00B80C8E /* Le BaluchonTests */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Le BaluchonTests"; path = "Le BaluchonTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		040FD99B248685AD00B80C8E /* WeatherServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTestCase.swift; sourceTree = "<group>"; };
 		040FD99D248685AD00B80C8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		040FD9A32486861500B80C8E /* Weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Weather.json; sourceTree = "<group>"; };
@@ -57,7 +60,10 @@
 		04D983E2247A712800ED1852 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		04D983E4247A74B500ED1852 /* WeatherJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherJSON.swift; sourceTree = "<group>"; };
 		04D983E6247A76F000ED1852 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		7B40DF1024948270001126D4 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
+		7B40DF122495CB57001126D4 /* FixerServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixerServiceTestCase.swift; sourceTree = "<group>"; };
 		7B4DFA2A248E298F00DE7340 /* WeatherDataTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataTestCase.swift; sourceTree = "<group>"; };
+		7B5CE5F524936EE8006B6259 /* Fixer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Fixer.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,8 @@
 				040FD9A52486865600B80C8E /* FakeResponseData.swift */,
 				040FD9A7248686AA00B80C8E /* URLSessionFake.swift */,
 				040FD9A32486861500B80C8E /* Weather.json */,
+				7B40DF122495CB57001126D4 /* FixerServiceTestCase.swift */,
+				7B5CE5F524936EE8006B6259 /* Fixer.json */,
 				040FD99D248685AD00B80C8E /* Info.plist */,
 			);
 			path = "Le BaluchonTests";
@@ -141,6 +149,7 @@
 				04D983E6247A76F000ED1852 /* WeatherData.swift */,
 				0426BCB72488FD3E00E48D04 /* FixerService.swift */,
 				0426BCB92489130D00E48D04 /* FixerJSON.swift */,
+				7B40DF1024948270001126D4 /* TranslationService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B5CE5F624936EE8006B6259 /* Fixer.json in Resources */,
 				040FD9A42486861500B80C8E /* Weather.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				040FD99C248685AD00B80C8E /* WeatherServiceTestCase.swift in Sources */,
+				7B40DF132495CB57001126D4 /* FixerServiceTestCase.swift in Sources */,
 				040FD9A8248686AA00B80C8E /* URLSessionFake.swift in Sources */,
 				7B4DFA2B248E298F00DE7340 /* WeatherDataTestCase.swift in Sources */,
 				040FD9A62486865600B80C8E /* FakeResponseData.swift in Sources */,
@@ -276,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0495BDF124795DC1000679D9 /* WeatherViewController.swift in Sources */,
+				7B40DF1124948270001126D4 /* TranslationService.swift in Sources */,
 				049856662488A6BA006F1ACD /* FixerViewController.swift in Sources */,
 				04D983E3247A712800ED1852 /* WeatherService.swift in Sources */,
 				04D983E7247A76F000ED1852 /* WeatherData.swift in Sources */,

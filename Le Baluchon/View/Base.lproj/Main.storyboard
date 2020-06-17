@@ -277,7 +277,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WjB-Ot-D8Q"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="weather" image="icon.nav" id="v4e-Wr-993"/>
+                    <tabBarItem key="tabBarItem" title="weather" image="tab.weather" id="v4e-Wr-993"/>
                     <navigationItem key="navigationItem" title="Weather" id="Su3-YJ-CGG"/>
                     <connections>
                         <outlet property="cityLabel" destination="RdJ-2R-dDY" id="gMX-gW-LpM"/>
@@ -296,8 +296,8 @@
     <resources>
         <image name="converter" width="30" height="30"/>
         <image name="fleche.droite" width="30" height="30"/>
-        <image name="icon.nav" width="50" height="50"/>
         <image name="load" width="30" height="30"/>
         <image name="sunny" width="50" height="50"/>
+        <image name="tab.weather" width="30" height="30"/>
     </resources>
 </document>

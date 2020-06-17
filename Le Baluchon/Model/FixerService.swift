@@ -17,10 +17,6 @@ final class FixerService {
         self.session = session
     }
     
-    enum NetworkError: Error {
-        case noData, incorrectResponse, undecodableData
-    }
-    
     //MARK: - Network Call.
     func getCurrency(currency: String, callback: @escaping (Result<Double, NetworkError>) -> Void) {
         let baseUrl = "http://data.fixer.io/api/latest?access_key="

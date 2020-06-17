@@ -29,17 +29,13 @@ final class FixerViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(FixerViewController.keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        // call the 'keyboardWillHide' function when the view controlelr receive notification that keyboard is going to be hidden
+        // call the 'keyboardWillHide' function when the view controller receive notification that keyboard is going to be hidden
         NotificationCenter.default.addObserver(self, selector: #selector(FixerViewController.keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
-    
-    
     
     // MARK: - Action
     /// Network call
@@ -70,8 +66,8 @@ final class FixerViewController: UIViewController {
     }
 }
 
+// MARK: - @objc method to show and hide
 extension FixerViewController {
-    // MARK: - @objc method to show and hide
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             // if keyboard size is not available for some reason, dont do anything
@@ -92,9 +88,7 @@ extension FixerViewController {
 extension FixerViewController {
     private func convertResponseToDouble() -> Double {
         guard let amountString = amountTextField.text else { return 0 }
-        guard let DoubleString = Int(amountString) else { return 0 }
-        print(Double(DoubleString))
-        let amount = Double(DoubleString)
+        guard let amount = Double(amountString) else { return 0.0 }
         return amount
     }
     
@@ -106,3 +100,4 @@ extension FixerViewController {
         return answer
     }
 }
+

@@ -11,6 +11,7 @@ import XCTest
 
 class WeatherServiceTestCase: XCTestCase {
     
+    // MARK: - 1. Error 
     func testGetWeatherShoulPostFailedCallBackError() {
         // Given
         let weather = WeatherService(
@@ -34,6 +35,7 @@ class WeatherServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
+    // MARK: - 2. No data
     func testGetWeatherShouldPostFailedCallBackIfNoData() {
         // Given
         let weather = WeatherService(session: URLSessionFake(data: nil, response: nil, error: nil))
@@ -55,6 +57,7 @@ class WeatherServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
+    // MARK: - 3. Incorrct response
     func testGetWeatherShouldPostFailedIfIncorrectResponse() {
         // Given
         let weather  = WeatherService(session: URLSessionFake(data: FakeResponseData.weatherCorrectData, response: FakeResponseData.responseKO, error: nil))
@@ -76,9 +79,10 @@ class WeatherServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
+    // MARK: - 4. Incorrect data
     func testGetWeatherShouldPostFailedCallbackIfIncorrectData() {
         // Given
-        let weather = WeatherService(session: URLSessionFake(data: FakeResponseData.weatherIncorrectData, response: FakeResponseData.responseOK, error: nil))
+        let weather = WeatherService(session: URLSessionFake(data: FakeResponseData.incorrectData, response: FakeResponseData.responseOK, error: nil))
         
         //When
         let expectation = XCTestExpectation(description: "Wait for queue change")
