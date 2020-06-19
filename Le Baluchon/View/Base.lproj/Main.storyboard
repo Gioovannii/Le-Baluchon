@@ -132,7 +132,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pGr-Zq-DZJ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Converter" image="converter" id="HSy-37-Cah"/>
+                    <tabBarItem key="tabBarItem" title="Converter" image="tab.converter" id="HSy-37-Cah"/>
                     <connections>
                         <outlet property="amountTextField" destination="SxC-ff-0UP" id="iQb-IW-1Aa"/>
                         <outlet property="answerLabel" destination="o7q-3f-za9" id="C3D-L8-dSo"/>
@@ -294,10 +294,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="converter" width="30" height="30"/>
         <image name="fleche.droite" width="30" height="30"/>
         <image name="load" width="30" height="30"/>
         <image name="sunny" width="50" height="50"/>
+        <image name="tab.converter" width="30" height="30"/>
         <image name="tab.weather" width="30" height="30"/>
     </resources>
 </document>

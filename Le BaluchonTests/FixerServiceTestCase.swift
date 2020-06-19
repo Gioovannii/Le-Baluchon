@@ -101,10 +101,15 @@ class FixerServiceTestCase: XCTestCase {
         let expectation = XCTestExpectation(description: "Wait for queue change")
         
         fixer.getCurrency(currency: "USD")  { result in
-            guard case .success(let data) = result else { return }
+            guard case .success(let data) = result else {
+                XCTFail("testGetCurrencyShouldPostSuccessCallbackIfNoMissingData")
+                return
+
+            }
             
-            XCTAssertNil(data)
+            XCTAssertEqual(data, 1.131075)
             expectation.fulfill()
+
         }
         wait(for: [expectation], timeout: 0.01)
     }
