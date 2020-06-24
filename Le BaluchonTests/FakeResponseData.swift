@@ -14,16 +14,14 @@ class FakeResponseData {
         let url = bundle.url(forResource: "Weather", withExtension: ".json")!
         return try! Data(contentsOf: url)
     }
-
-    static var FixerCorrectData: Data? {
+    
+    static var fixerCorrectData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
         let url = bundle.url(forResource: "Fixer", withExtension: ".json")!
         return try! Data(contentsOf: url)
     }
     
-    static let incorrectData = "erreur".data(using: .utf8)
-    static let correctData = "data".data(using: .utf8)
-    
+    static let incorrectData = "erreur".data(using: .utf8)    
     
     //MARK: - Response
     static let responseOK = HTTPURLResponse(

@@ -19,8 +19,6 @@ struct WeatherData {
     let cityNameParis: String
     let temperatureParis: Double
     
-    
-    
     // Convert temperature into String to one decimal number
     var temperatureString: String { return String(format: "%.1f", temperature) }
     var temperatureStringParis: String { return String(format: "%.1f", temperatureParis) }

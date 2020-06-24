@@ -18,9 +18,7 @@ class WeatherService {
     
     init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
-    }
-    
-   
+    }   
     
     //MARK: - Network Call.
     func getWeatherData(callback: @escaping (Result<WeatherData, NetworkError>) -> Void) {

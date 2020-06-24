@@ -41,6 +41,13 @@ final class FixerViewController: UIViewController {
     /// Network call
     /// - Parameter sender: UI Button pressed
     @IBAction func convertPressed(_ sender: UIButton) {
+        
+        guard amountTextField.text == "0.0" else {
+            amountTextField.text = "Pressed something"
+            answerLabel.text = "No result nothing to convert"
+            return
+        }
+        
         amountTextField.resignFirstResponder()
         FixerService().getCurrency(currency: "USD") { result in
             switch result {

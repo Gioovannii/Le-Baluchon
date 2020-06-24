@@ -21,7 +21,7 @@ final class FixerService {
     func getCurrency(currency: String, callback: @escaping (Result<Double, NetworkError>) -> Void) {
         let baseUrl = "http://data.fixer.io/api/latest?access_key="
         let apiAccessKey =  "173e725be7b0231e46c4f70d08b278eb"
-        let usd = "&symbols=USD&format=1"
+        let usd = "&symbols=USD"
         
         guard let url = URL(string: "\(baseUrl)\(apiAccessKey)&\(usd)") else { return }
         

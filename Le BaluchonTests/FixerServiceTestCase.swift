@@ -86,7 +86,10 @@ class FixerServiceTestCase: XCTestCase {
                 XCTFail("testGetCurrencyShouldPostFailedCallbackIfIncorrectData")
                 return
             }
+            
             XCTAssertNotNil(error)
+            
+            //Then
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -96,18 +99,17 @@ class FixerServiceTestCase: XCTestCase {
     func testGetCurrencyShouldPostSuccessCallbackIfNoMissingData() {
         // Given
         let fixer = FixerService(
-            session: URLSessionFake(data: FakeResponseData.correctData, response: FakeResponseData.responseOK, error: nil))
+            session: URLSessionFake(data: FakeResponseData.fixerCorrectData, response: FakeResponseData.responseOK, error: nil))
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
         
-        fixer.getCurrency(currency: "USD")  { result in
+        fixer.getCurrency(currency: "USD") { result in
             guard case .success(let data) = result else {
                 XCTFail("testGetCurrencyShouldPostSuccessCallbackIfNoMissingData")
                 return
-
             }
             
-            XCTAssertEqual(data, 1.131075)
+            XCTAssertEqual(data, 1.120222)
             expectation.fulfill()
 
         }

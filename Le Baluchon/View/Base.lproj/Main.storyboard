@@ -109,7 +109,7 @@
                                     <constraint firstAttribute="width" constant="50" id="feP-Gr-449"/>
                                     <constraint firstAttribute="width" secondItem="7tU-gZ-d5e" secondAttribute="height" multiplier="1:1" id="xzn-Fr-XP8"/>
                                 </constraints>
-                                <state key="normal" image="fleche.droite"/>
+                                <state key="normal" image="converter.fleche"/>
                                 <connections>
                                     <action selector="convertPressed:" destination="6E8-36-c8C" eventType="touchUpInside" id="6pg-af-mhN"/>
                                 </connections>
@@ -280,12 +280,12 @@
                     <tabBarItem key="tabBarItem" title="weather" image="tab.weather" id="v4e-Wr-993"/>
                     <navigationItem key="navigationItem" title="Weather" id="Su3-YJ-CGG"/>
                     <connections>
-                        <outlet property="cityLabel" destination="RdJ-2R-dDY" id="gMX-gW-LpM"/>
-                        <outlet property="conditionImageView" destination="MKa-4t-8ut" id="92U-MP-UTg"/>
-                        <outlet property="conditionNewYorkImageView" destination="Csb-nI-CeK" id="kee-Z0-T3s"/>
-                        <outlet property="newYorkLabel" destination="xzE-Ww-p9P" id="8gG-eJ-KC6"/>
-                        <outlet property="temperatureLabel" destination="E11-zM-Sab" id="H0v-iR-yEW"/>
-                        <outlet property="temperatureNewYorkLabel" destination="uqH-dZ-66B" id="4vq-dd-UFZ"/>
+                        <outletCollection property="conditionImageView" destination="MKa-4t-8ut" collectionClass="NSMutableArray" id="d1P-aP-qlH"/>
+                        <outletCollection property="temperatureLabel" destination="E11-zM-Sab" collectionClass="NSMutableArray" id="8QJ-sY-rUn"/>
+                        <outletCollection property="cityLabel" destination="RdJ-2R-dDY" collectionClass="NSMutableArray" id="KOE-DJ-PYw"/>
+                        <outletCollection property="cityLabel" destination="xzE-Ww-p9P" collectionClass="NSMutableArray" id="mG3-hW-RW8"/>
+                        <outletCollection property="conditionImageView" destination="Csb-nI-CeK" collectionClass="NSMutableArray" id="qZ6-ea-2RA"/>
+                        <outletCollection property="temperatureLabel" destination="uqH-dZ-66B" collectionClass="NSMutableArray" id="bB0-L5-1vA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df0-fc-3R4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -294,7 +294,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fleche.droite" width="30" height="30"/>
+        <image name="converter.fleche" width="30" height="30"/>
         <image name="load" width="30" height="30"/>
         <image name="sunny" width="50" height="50"/>
         <image name="tab.converter" width="30" height="30"/>

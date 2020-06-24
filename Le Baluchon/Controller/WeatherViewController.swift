@@ -11,13 +11,10 @@ import UIKit
 final class WeatherViewController: UIViewController {
     
     //MARK:- IBOutlets
-    @IBOutlet weak var conditionImageView: UIImageView!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var conditionNewYorkImageView: UIImageView!
-    @IBOutlet weak var temperatureNewYorkLabel: UILabel!
-    @IBOutlet weak var newYorkLabel: UILabel!
-    
+    @IBOutlet var conditionImageView: [UIImageView]!
+    @IBOutlet var temperatureLabel: [UILabel]!
+    @IBOutlet var cityLabel: [UILabel]!
+  
     private var weatherService = WeatherService()
     
     override func viewDidLoad() {
@@ -44,6 +41,7 @@ final class WeatherViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.update(weather: data)
                     print("WeatherData Loaded")
+                    print(data)
                 }
             case .failure(let error):
                 print(error)
@@ -53,13 +51,15 @@ final class WeatherViewController: UIViewController {
     }
     
     private func update(weather: WeatherData) {
-        cityLabel.text = weather.cityNameParis
-        temperatureLabel.text = weather.temperatureStringParis
-        conditionImageView.image = UIImage(imageLiteralResourceName: weather.conditionNameParis)
         
-        newYorkLabel.text = weather.cityName
-        temperatureNewYorkLabel.text = weather.temperatureString
-        conditionNewYorkImageView.image = UIImage(imageLiteralResourceName: weather.conditionName)
+        cityLabel[0].text = weather.cityNameParis
+        temperatureLabel[0].text = weather.temperatureStringParis
+        conditionImageView[0].image = UIImage(imageLiteralResourceName: weather.conditionNameParis)
+        
+        
+        cityLabel[1].text = weather.cityName
+        temperatureLabel[1].text = weather.temperatureString
+        conditionImageView[1].image = UIImage(imageLiteralResourceName: weather.conditionName)
     }
     
     func presentAlert(title: String, message: String) {
