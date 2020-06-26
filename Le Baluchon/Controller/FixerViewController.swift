@@ -19,10 +19,6 @@ final class FixerViewController: UIViewController {
     
     // MARK: - Properties
     var amount: Double = 0.00
-    var amountString: String {
-        return String(format: "%.0f", amount)
-    }
-    
     var rate: Double = 0.00
     var answer : Double = 0.00
     
@@ -42,12 +38,6 @@ final class FixerViewController: UIViewController {
     /// - Parameter sender: UI Button pressed
     @IBAction func convertPressed(_ sender: UIButton) {
         
-        guard amountTextField.text == "0.0" else {
-            amountTextField.text = "Pressed something"
-            answerLabel.text = "No result nothing to convert"
-            return
-        }
-        
         amountTextField.resignFirstResponder()
         FixerService().getCurrency(currency: "USD") { result in
             switch result {
@@ -62,7 +52,7 @@ final class FixerViewController: UIViewController {
                         return String(format: "%.3f", result)
                     }
                     
-                    self.answerLabel.text = "\(self.amountString) EUR = \(resultString) USD"
+                    self.answerLabel.text = "\(self.amount) EUR = \(resultString) USD"
                     self.amountTextField.text = ""
                     
                 }
@@ -95,16 +85,29 @@ extension FixerViewController {
 extension FixerViewController {
     private func convertResponseToDouble() -> Double {
         guard let amountString = amountTextField.text else { return 0 }
-        guard let amount = Double(amountString) else { return 0.0 }
+        print("amount string", amountString)
+       
+        guard let amount = Double(amountString) else {
+            presentAlert(title: "Error", message: "This is not a correct decimal number")
+            return 0.0 }
+        print(amount)
         return amount
     }
     
+    // Once checked amount we update answer
     private func updateResult(_ amount: Double, _ rate: Double) -> Double? {
         let amountUser =  convertResponseToDouble()
         self.amount = amountUser
         answer = rate * amountUser
         print("\(amountUser) EUR = \(answer) USD")
         return answer
+    }
+    
+    // Alert for handle errors
+    func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: title, style: .cancel))
+        present(alert, animated: true)
     }
 }
 
