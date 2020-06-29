@@ -20,7 +20,7 @@
                     <connections>
                         <segue destination="6E8-36-c8C" kind="relationship" relationship="viewControllers" id="tGM-aD-6Jy"/>
                         <segue destination="qNP-dB-KoB" kind="relationship" relationship="viewControllers" id="mk0-K4-GaP"/>
-                        <segue destination="AS7-Qf-7U7" kind="relationship" relationship="viewControllers" id="lze-LH-kag"/>
+                        <segue destination="AS7-Qf-7U7" kind="relationship" relationship="viewControllers" id="XeN-dH-BEP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I1l-fb-xqB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -141,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfa-Vv-X67" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-62" y="-871"/>
+            <point key="canvasLocation" x="-799" y="-860"/>
         </scene>
         <!--Weather-->
         <scene sceneID="uNi-H4-CbU">
@@ -291,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df0-fc-3R4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-62" y="-152"/>
+            <point key="canvasLocation" x="-628" y="-152"/>
         </scene>
         <!--translate-->
         <scene sceneID="x6I-Zg-a8h">
@@ -302,7 +302,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jd-ZH-wBO">
-                                <rect key="frame" x="213" y="64" width="181" height="53"/>
+                                <rect key="frame" x="213" y="84" width="181" height="53"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="OA1-Ps-J5a"/>
                                 </constraints>
@@ -311,7 +312,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="French" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gn-c5-MQ7">
-                                <rect key="frame" x="20" y="64" width="185" height="53"/>
+                                <rect key="frame" x="20" y="84" width="185" height="53"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="0gn-c5-MQ7" secondAttribute="height" multiplier="1:1" constant="132" id="bF5-gP-gdm"/>
                                 </constraints>
@@ -320,47 +322,63 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Tap your text to translate here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="f7X-J7-bPg">
-                                <rect key="frame" x="20" y="127" width="374" height="328"/>
+                                <rect key="frame" x="20" y="187" width="374" height="288"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Here is your text translate" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TaP-EQ-ffO">
-                                <rect key="frame" x="20" y="475" width="374" height="318"/>
+                                <rect key="frame" x="20" y="495" width="374" height="288"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="318" id="hAR-eU-Bki"/>
-                                </constraints>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LkQ-Hl-ghh">
+                                <rect key="frame" x="20" y="147" width="374" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="Get translation">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="translationTap:" destination="AS7-Qf-7U7" eventType="touchUpInside" id="O3j-T7-GHV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.66666668653488159" green="0.63770724747116569" blue="0.64684391788921558" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="6jd-ZH-wBO" firstAttribute="top" secondItem="0gn-c5-MQ7" secondAttribute="top" id="2Ri-V6-TCU"/>
+                            <constraint firstItem="TaP-EQ-ffO" firstAttribute="top" secondItem="f7X-J7-bPg" secondAttribute="bottom" constant="20" id="DtF-aI-yT8"/>
                             <constraint firstItem="6jd-ZH-wBO" firstAttribute="centerY" secondItem="0gn-c5-MQ7" secondAttribute="centerY" id="EFA-tl-jLt"/>
-                            <constraint firstItem="TaP-EQ-ffO" firstAttribute="top" secondItem="f7X-J7-bPg" secondAttribute="bottom" constant="20" id="Fil-U8-GVh"/>
+                            <constraint firstItem="jFr-Jr-3Ka" firstAttribute="bottom" secondItem="TaP-EQ-ffO" secondAttribute="bottom" constant="30" id="Fxr-zm-Cne"/>
                             <constraint firstItem="6jd-ZH-wBO" firstAttribute="leading" secondItem="0gn-c5-MQ7" secondAttribute="trailing" constant="8" id="Fy4-Ah-u0D"/>
+                            <constraint firstItem="LkQ-Hl-ghh" firstAttribute="leading" secondItem="jFr-Jr-3Ka" secondAttribute="leading" constant="20" id="G1O-Or-OpX"/>
+                            <constraint firstItem="jFr-Jr-3Ka" firstAttribute="trailing" secondItem="LkQ-Hl-ghh" secondAttribute="trailing" constant="20" id="IgU-1m-dWd"/>
+                            <constraint firstItem="f7X-J7-bPg" firstAttribute="top" secondItem="6jd-ZH-wBO" secondAttribute="bottom" constant="50" id="Kv2-g2-8so"/>
                             <constraint firstItem="jFr-Jr-3Ka" firstAttribute="trailing" secondItem="TaP-EQ-ffO" secondAttribute="trailing" constant="20" id="MiF-2T-A9e"/>
-                            <constraint firstItem="0gn-c5-MQ7" firstAttribute="top" secondItem="jFr-Jr-3Ka" secondAttribute="top" constant="20" id="Qz7-wa-vHt"/>
+                            <constraint firstItem="LkQ-Hl-ghh" firstAttribute="top" secondItem="6jd-ZH-wBO" secondAttribute="bottom" constant="10" id="Ok6-kG-8BO"/>
+                            <constraint firstItem="0gn-c5-MQ7" firstAttribute="top" secondItem="jFr-Jr-3Ka" secondAttribute="top" constant="40" id="Qz7-wa-vHt"/>
                             <constraint firstItem="6jd-ZH-wBO" firstAttribute="trailing" secondItem="m5Q-yG-Q8n" secondAttribute="trailingMargin" id="XBw-2h-84Y"/>
-                            <constraint firstItem="f7X-J7-bPg" firstAttribute="top" secondItem="6jd-ZH-wBO" secondAttribute="bottom" constant="10" id="cEW-dC-5BI"/>
+                            <constraint firstItem="TaP-EQ-ffO" firstAttribute="height" secondItem="f7X-J7-bPg" secondAttribute="height" id="YSa-c5-vkL"/>
                             <constraint firstItem="jFr-Jr-3Ka" firstAttribute="trailing" secondItem="f7X-J7-bPg" secondAttribute="trailing" constant="20" id="iZH-jB-OgZ"/>
-                            <constraint firstItem="jFr-Jr-3Ka" firstAttribute="bottom" secondItem="TaP-EQ-ffO" secondAttribute="bottom" constant="20" id="jKa-om-e1x"/>
                             <constraint firstItem="0gn-c5-MQ7" firstAttribute="leading" secondItem="jFr-Jr-3Ka" secondAttribute="leading" constant="20" id="oJq-vM-iU6"/>
                             <constraint firstItem="TaP-EQ-ffO" firstAttribute="leading" secondItem="jFr-Jr-3Ka" secondAttribute="leading" constant="20" id="raB-CS-0lc"/>
                             <constraint firstItem="f7X-J7-bPg" firstAttribute="leading" secondItem="jFr-Jr-3Ka" secondAttribute="leading" constant="20" id="uL5-ao-xsV"/>
+                            <constraint firstItem="f7X-J7-bPg" firstAttribute="top" secondItem="LkQ-Hl-ghh" secondAttribute="bottom" constant="10" id="w7G-m7-l5C"/>
                             <constraint firstItem="6jd-ZH-wBO" firstAttribute="bottom" secondItem="0gn-c5-MQ7" secondAttribute="bottom" id="z3Y-0V-fkB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jFr-Jr-3Ka"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="translate" image="tab.translate" id="sIQ-17-YUb"/>
+                    <connections>
+                        <outlet property="textInput" destination="f7X-J7-bPg" id="Wmz-Fn-6lf"/>
+                        <outlet property="textOutput" destination="TaP-EQ-ffO" id="NaC-LQ-QcR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DdO-Jh-OoU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-62.318840579710148" y="561.83035714285711"/>
+            <point key="canvasLocation" x="-830.43478260869574" y="585.9375"/>
         </scene>
     </scenes>
     <resources>
