@@ -11,6 +11,7 @@ import Foundation
 struct WeatherData {
     
     // MARK: - Properties
+    
     let conditionId: Int
     let cityName: String
     let temperature: Double

@@ -14,7 +14,7 @@ class FixerServiceTestCase: XCTestCase {
     func testGetCurrencyShouldPostFailedCallbackError() {
         // Given
         let fixer = FixerService(
-            session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.fixerError))
+            session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
 
@@ -37,7 +37,7 @@ class FixerServiceTestCase: XCTestCase {
     func testGetCurrencyShouldPostFailedCallbackIfNodData() {
         // Given
         let fixer = FixerService(
-            session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.fixerError))
+            session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
         
