@@ -18,9 +18,9 @@ class TranslationService {
     }
     
     //MARK: - Network Call.
-    func getCurrency(textInput: String, callback: @escaping (Result<String, NetworkError>) -> Void) {
+    func getCurrency(textInput: String,target: String, callback: @escaping (Result<String, NetworkError>) -> Void) {
         
-        guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2?key=AIzaSyA7U25Y2ynHepATFgDdEBAHjSvaVIK9WTQ&q=\(textInput)&source=fr&target=en&format=text") else { return }
+        guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2?key=AIzaSyA7U25Y2ynHepATFgDdEBAHjSvaVIK9WTQ&q=\(textInput)&source=fr&target=\(target)&format=text") else { return }
         
         print(url)
         task?.cancel()

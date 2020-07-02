@@ -48,11 +48,11 @@ final class FixerViewController: UIViewController {
                     print(self.rate)
                     
                     guard let result = self.updateResult(self.amount, self.rate) else { return }
-                    var resultString: String {
-                        return String(format: "%.3f", result)
-                    }
                     
-                    self.answerLabel.text = "\(self.amount) EUR = \(resultString) USD"
+                    let resultStr = self.formatResult(number: result)
+                    let format = self.formatResult(number: self.amount)
+                    
+                    self.answerLabel.text = "\(format) EUR = \(resultStr) USD"
                     self.amountTextField.text = ""
                     
                 }
@@ -86,15 +86,16 @@ extension FixerViewController {
     private func convertResponseToDouble() -> Double {
         guard let amountString = amountTextField.text else { return 0 }
         print("amount string", amountString)
-       
+        
         guard let amount = Double(amountString) else {
             presentAlert(title: "Error", message: "This is not a correct decimal number")
-            return 0.0 }
+            return 0.0
+        }
         print(amount)
         return amount
     }
     
-    // Once checked amount we update answer
+    /// Once checked amount we update answer
     private func updateResult(_ amount: Double, _ rate: Double) -> Double? {
         let amountUser =  convertResponseToDouble()
         self.amount = amountUser
@@ -103,11 +104,20 @@ extension FixerViewController {
         return answer
     }
     
-    // Alert for handle errors
+    /// Alert for handle errors
     func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alert, animated: true)
+    }
+    
+    /// Format to 3 digit
+    private func formatResult(number: Double) -> String {
+        let formater = NumberFormatter()
+        formater.maximumFractionDigits = 3
+        
+        guard let resultFormated = formater.string(from: NSNumber(value: number)) else { return String()}
+        return resultFormated
     }
 }
 
