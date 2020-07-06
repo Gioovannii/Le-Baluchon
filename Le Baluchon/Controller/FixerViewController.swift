@@ -17,6 +17,8 @@ final class FixerViewController: UIViewController {
     @IBOutlet weak var answerLabel: UILabel!
     
     
+    private let httpClient: HTTPClient = HTTPClient()
+    
     // MARK: - Properties
     var amount: Double = 0.00
     var rate: Double = 0.00
@@ -39,12 +41,17 @@ final class FixerViewController: UIViewController {
     @IBAction func convertPressed(_ sender: UIButton) {
         
         amountTextField.resignFirstResponder()
-        FixerService().getCurrency(currency: "USD") { result in
+        
+        //        let currency = "USD"
+        guard let url = URL(string: "http://data.fixer.io/api/latest?") else { return }
+        
+        httpClient.request(baseURL: url, parameters: [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]) { (result: Result<FixerJSON, NetworkError>) in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
                     
-                    self.rate = data
+                    guard let usd = data.rates["USD"] else { return }
+                    self.rate = usd
                     print(self.rate)
                     
                     guard let result = self.updateResult(self.amount, self.rate) else { return }
@@ -55,13 +62,17 @@ final class FixerViewController: UIViewController {
                     self.answerLabel.text = "\(format) EUR = \(resultStr) USD"
                     self.amountTextField.text = ""
                     
+                    
                 }
             case .failure(let error):
-                print(error)
+                print(error.description)
+                
             }
         }
     }
 }
+
+
 
 // MARK: - @objc method to show and hide
 extension FixerViewController {

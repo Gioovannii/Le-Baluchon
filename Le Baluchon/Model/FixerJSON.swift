@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct FixerData: Decodable {
+struct FixerJSON: Decodable {
     let rates: [String: Double]
 }

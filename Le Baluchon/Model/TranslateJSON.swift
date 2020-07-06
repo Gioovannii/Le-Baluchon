@@ -9,16 +9,16 @@
 import Foundation
 
 // MARK: - Welcome
-struct TranslateJSON: Decodable {
+struct TranslateJSON: Codable {
     let data: DataClass
 }
 
 // MARK: - DataClass
-struct DataClass: Decodable {
+struct DataClass: Codable {
     let translations: [Translation]
 }
 
 // MARK: - Translation
-struct Translation: Decodable {
-    let translatedText: String
+struct Translation: Codable {
+    let translatedText, detectedSourceLanguage, model: String
 }

@@ -18,7 +18,7 @@ class TranslateServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
         
-        translate.getCurrency(textInput: "Bonjour") { result in
+        translate.getCurrency(textInput: "Bonjour", target: "en") { result in
             guard case .failure(let error) = result else {
                 XCTFail("testFixerShouldPostFailedCallbackError")
                 return
@@ -40,7 +40,7 @@ class TranslateServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
         
-        translate.getCurrency(textInput: "Bonjour") { result in
+        translate.getCurrency(textInput: "Bonjour", target: "en") { result in
             guard  case .failure(let error) = result else {
                 XCTFail("testFixerShouldPostFailedCallBackError")
                 return
@@ -61,7 +61,7 @@ class TranslateServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
         
-        translate.getCurrency(textInput: "Bonjour") { result in
+        translate.getCurrency(textInput: "Bonjour", target: "en") { result in
             guard  case .failure(let error) = result else {
                 XCTFail("testFixerShouldPostFailedCallBackError")
                 return
@@ -82,7 +82,7 @@ class TranslateServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
         
-        translate.getCurrency(textInput: "Bonjour") { result in
+        translate.getCurrency(textInput: "Bonjour", target: "en") { result in
             guard  case .failure(let error) = result else {
                 XCTFail("testFixerShouldPostFailedCallBackError")
                 return
@@ -104,7 +104,7 @@ class TranslateServiceTestCase: XCTestCase {
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
         
-        translate.getCurrency(textInput: "Bonjour") { result in
+        translate.getCurrency(textInput: "Bonjour", target: "en") { result in
             guard case .success(let data) = result else {
                 XCTFail("testFixerShouldPostFailedCallBackError")
                 return

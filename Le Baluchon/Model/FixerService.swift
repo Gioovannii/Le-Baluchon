@@ -39,7 +39,7 @@ final class FixerService {
                 return
             }
             
-            guard let responseDecoded = try? JSONDecoder().decode(FixerData.self, from: data),
+            guard let responseDecoded = try? JSONDecoder().decode(FixerJSON.self, from: data),
                 let usd = responseDecoded.rates[currency] else {
                 callback(.failure(.undecodableData))
                 return

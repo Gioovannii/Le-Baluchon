@@ -20,8 +20,12 @@ class TranslationService {
     //MARK: - Network Call.
     func getCurrency(textInput: String,target: String, callback: @escaping (Result<String, NetworkError>) -> Void) {
         
-        guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2?key=AIzaSyA7U25Y2ynHepATFgDdEBAHjSvaVIK9WTQ&q=\(textInput)&source=fr&target=\(target)&format=text") else { return }
+        let autoDetect = "fr"
         
+        guard let textEncoded = textInput.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
+        
+        guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2?key=AIzaSyA7U25Y2ynHepATFgDdEBAHjSvaVIK9WTQ&q=\(textEncoded)&target=\(target)&model=base") else { return }
+        //  &source=
         print(url)
         task?.cancel()
         // We give the session a task
@@ -37,9 +41,18 @@ class TranslationService {
             }
             
             guard let responseDecoded = try? JSONDecoder().decode(TranslateJSON.self, from: data) else {
-                    callback(.failure(.undecodableData))
-                    return
+                callback(.failure(.undecodableData))
+                return
             }
+            
+            DispatchQueue.main.async {
+                guard  autoDetect == responseDecoded.data.translations[0].detectedSourceLanguage else {
+                    callback(.failure(.badInput))
+                    return
+                }
+            }
+            
+            
             callback(.success(responseDecoded.data.translations[0].translatedText))
         }
         // start task

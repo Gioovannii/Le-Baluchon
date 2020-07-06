@@ -15,7 +15,10 @@ final class WeatherViewController: UIViewController {
     @IBOutlet var temperatureLabel: [UILabel]!
     @IBOutlet var cityLabel: [UILabel]!
   
-    private var weatherService = WeatherService()
+//    private var weatherService = WeatherService()
+    private var httpClient: HTTPClient = HTTPClient()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,7 @@ final class WeatherViewController: UIViewController {
     }
     
     func networkCall() {
+
         WeatherService().getWeatherData() { result in
             switch result {
             case .success(let data):

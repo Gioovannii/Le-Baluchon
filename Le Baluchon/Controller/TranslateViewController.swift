@@ -10,11 +10,15 @@ import UIKit
 
 final class TranslateViewController: UIViewController, UITextViewDelegate {
     // MARK: - Outlet
-    @IBOutlet weak var textInput: UITextView!
+    @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet weak var textOutputLabel: UILabel!
     @IBOutlet weak var loadingUserButton: UIButton!
+    @IBOutlet weak var englishOutletButton: UIButton!
+    @IBOutlet weak var mandarinOutletButton: UIButton!
+    
     
     var target = "en"
+    let customBlue = UIColor(red: 0.614, green: 0.697, blue: 0.984, alpha: 1)
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -23,43 +27,46 @@ final class TranslateViewController: UIViewController, UITextViewDelegate {
     }
     
     // MARK: - Text Field
-
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         loadingUserButton.setTitle("Get translation", for: .normal)
-        textInput.text = ""
+        inputTextView.text = ""
     }
     
     @IBAction func englishButtonTap(_ sender: Any) {
-        presentAlert(title: "English Activated", message: "")
+        englishOutletButton.attributedTitle(for: .disabled)
+        englishOutletButton.backgroundColor = customBlue
+        mandarinOutletButton.backgroundColor = .groupTableViewBackground
         target = "en"
     }
     @IBAction func mandarinButtonTap(_ sender: Any) {
-         presentAlert(title: "Mandarin Activated", message: "")
+        mandarinOutletButton.backgroundColor = customBlue
+        englishOutletButton.backgroundColor = .groupTableViewBackground
         target = "zh-TW"
     }
-    
     
     // MARK: - Action
     @IBAction func translationTap(_ sender: UIButton) {
         loadingUserButton.setTitle("Loading", for: .normal)
         
-        let formatSpaces = textInput.text.replacingOccurrences(of: " ", with: "%20")
-
-        textInput.resignFirstResponder()
-        TranslationService().getCurrency(textInput: formatSpaces, target: target) { result in
+        inputTextView.resignFirstResponder()
+        TranslationService().getCurrency(textInput: inputTextView.text, target: target) { result in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
-                    print(self.textInput.text!)
+                    print(self.inputTextView.text!)
                     print("data controller = \(data)")
                     self.loadingUserButton.setTitle("Here you're translation", for: .normal)
                     self.textOutputLabel.text = data
-
+                    
                 }
                 
             case .failure(let error):
-                self.presentAlert(title: "\(error)", message: "No translation")
-                print(error)
+                DispatchQueue.main.async {
+                    self.textOutputLabel.text = "Unavailable"
+                    self.presentAlert(title: "\(error.description)", message: "")
+                    print(error)
+                }
             }
         }
     }
