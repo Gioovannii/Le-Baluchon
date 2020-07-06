@@ -38,20 +38,44 @@ final class WeatherViewController: UIViewController {
     }
     
     func networkCall() {
-
-        WeatherService().getWeatherData() { result in
+        
+//         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?id=5128581%2C2968815&appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric") else { return }
+        
+        
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?") else { return }
+        
+        //                      ☣️ ajout de 52 apres le %2 de id  ici |
+        httpClient.request(baseURL: url, parameters: [("id", "5128581%2C2968815"), ("appid", "17121490b9e3ea8f4d54dc0b563f9fb2"), ("units", "metric")]) { (result: Result<WeatherJSON, NetworkError>) in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
-                    self.update(weather: data)
-                    print("WeatherData Loaded")
+                     
                     print(data)
                 }
+                
             case .failure(let error):
                 print(error)
-                self.presentAlert(title: "Heyyy", message: "Your request has gone wrong")
+                self.presentAlert(title: error.description, message: "")
             }
         }
+
+       
+        
+        
+//
+//        WeatherService().getWeatherData() { result in
+//            switch result {
+//            case .success(let data):
+//                DispatchQueue.main.async {
+//                    self.update(weather: data)
+//                    print("WeatherData Loaded")
+//                    print(data)
+//                }
+//            case .failure(let error):
+//                print(error)
+//                self.presentAlert(title: "Heyyy", message: "Your request has gone wrong")
+//            }
+//       }
     }
     
     private func update(weather: WeatherData) {
@@ -65,10 +89,6 @@ final class WeatherViewController: UIViewController {
         temperatureLabel[1].text = weather.temperatureString
         conditionImageView[1].image = UIImage(imageLiteralResourceName: weather.conditionName)
     }
-    
-    func presentAlert(title: String, message: String) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "Continue", style: .cancel))
-        self.present(alertVC, animated: true)
-    }
 }
+
+

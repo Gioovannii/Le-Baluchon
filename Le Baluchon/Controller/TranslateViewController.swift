@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TranslateViewController: UIViewController, UITextViewDelegate {
+final class TranslateViewController: UIViewController {
     // MARK: - Outlet
     @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet weak var textOutputLabel: UILabel!
@@ -16,21 +16,16 @@ final class TranslateViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var englishOutletButton: UIButton!
     @IBOutlet weak var mandarinOutletButton: UIButton!
     
-    
+    // MARK: - Properties
+    private var httpClient: HTTPClient = HTTPClient()
     var target = "en"
     let customBlue = UIColor(red: 0.614, green: 0.697, blue: 0.984, alpha: 1)
+    
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-    }
-    
-    // MARK: - Text Field
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        loadingUserButton.setTitle("Get translation", for: .normal)
-        inputTextView.text = ""
     }
     
     @IBAction func englishButtonTap(_ sender: Any) {
@@ -48,33 +43,44 @@ final class TranslateViewController: UIViewController, UITextViewDelegate {
     // MARK: - Action
     @IBAction func translationTap(_ sender: UIButton) {
         loadingUserButton.setTitle("Loading", for: .normal)
+        guard let text = inputTextView.text else { return }
         
         inputTextView.resignFirstResponder()
-        TranslationService().getCurrency(textInput: inputTextView.text, target: target) { result in
+        
+        guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2?") else { return }
+        httpClient.request(baseURL: url, parameters: [("key", "AIzaSyA7U25Y2ynHepATFgDdEBAHjSvaVIK9WTQ"), ("q", text), ("target", target), ("model", "base")]) { (result: Result<TranslateJSON, NetworkError>) in
             switch result {
-            case .success(let data):
+            case .success(let text):
                 DispatchQueue.main.async {
-                    print(self.inputTextView.text!)
-                    print("data controller = \(data)")
-                    self.loadingUserButton.setTitle("Here you're translation", for: .normal)
-                    self.textOutputLabel.text = data
-                    
+                guard text.data.translations[0].detectedSourceLanguage == "fr" else {
+                    self.presentAlert(title: "In French please", message: "")
+                    self.loadingUserButton.setTitle("You missed it!", for: .normal)
+                    self.textOutputLabel.text = "In french please"
+                    return
+                }
+                
+                print(text)
+                print(text.data.translations[0].translatedText)
+                    self.loadingUserButton.setTitle("Here youre translation", for: .normal)
+                    self.textOutputLabel.text = text.data.translations[0].translatedText
                 }
                 
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.textOutputLabel.text = "Unavailable"
-                    self.presentAlert(title: "\(error.description)", message: "")
                     print(error)
+                    self.presentAlert(title: error.description, message: "")
                 }
             }
         }
     }
-    
-    func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(alert, animated: true)
-    }
+}
+
+extension TranslateViewController: UITextViewDelegate {
+    // MARK: - Text Field
+       
+       func textViewDidBeginEditing(_ textView: UITextView) {
+           loadingUserButton.setTitle("Get translation", for: .normal)
+           inputTextView.text = ""
+       }
 }
 

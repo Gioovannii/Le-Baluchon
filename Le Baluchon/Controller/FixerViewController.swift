@@ -45,7 +45,7 @@ final class FixerViewController: UIViewController {
         //        let currency = "USD"
         guard let url = URL(string: "http://data.fixer.io/api/latest?") else { return }
         
-        httpClient.request(baseURL: url, parameters: [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]) { (result: Result<FixerJSON, NetworkError>) in
+        httpClient.request(baseURL: url, parameters: [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]) { [unowned self] (result: Result<FixerJSON, NetworkError>) in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
@@ -114,14 +114,7 @@ extension FixerViewController {
         print("\(amountUser) EUR = \(answer) USD")
         return answer
     }
-    
-    /// Alert for handle errors
-    func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(alert, animated: true)
-    }
-    
+ 
     /// Format to 3 digit
     private func formatResult(number: Double) -> String {
         let formater = NumberFormatter()
@@ -130,5 +123,14 @@ extension FixerViewController {
         guard let resultFormated = formater.string(from: NSNumber(value: number)) else { return String()}
         return resultFormated
     }
+}
+
+extension UIViewController {
+    /// Alert for handle errors
+       func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+           present(alert, animated: true)
+       }
 }
 
