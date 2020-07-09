@@ -9,16 +9,25 @@
 import XCTest
 
 class FixerServiceTestCase: XCTestCase {
+    // Tester httpengine
+    
+    let httpClient = HTTPClient()
+    let url = URL(string: "http://data.fixer.io/api/latest?")!
+     
+    
     
     // MARK: - Error
     func testGetCurrencyShouldPostFailedCallbackError() {
-        // Given
-        let fixer = FixerService(
-            session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
+//        guard let url = URL(string: "http://data.fixer.io/api/latest?") else { return }
+        
+        
+        //        let fixer = HTTPEngine(session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
-
-        fixer.getCurrency(currency: "USD") { result in
+        
+        let fixer = HTTPClient(httpEngine: HTTPEngine(session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error)))
+        
+        fixer.request(baseURL: url, parameters: [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]) { (result: Result<FixerJSON, NetworkError>) in
             guard case .failure(let error) = result else {
                 XCTFail("testFixerShouldPostFailedCallbackError")
                 return
@@ -36,12 +45,11 @@ class FixerServiceTestCase: XCTestCase {
     // MARK: - No data
     func testGetCurrencyShouldPostFailedCallbackIfNodData() {
         // Given
-        let fixer = FixerService(
-            session: URLSessionFake(data: nil, response: nil, error: FakeResponseData.error))
+        let fixer = HTTPClient(httpEngine: HTTPEngine(session: URLSessionFake(data: FakeResponseData.incorrectData, response: nil, error: FakeResponseData.error)))
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
         
-        fixer.getCurrency(currency: "USD") { result in
+        fixer.request(baseURL: url, parameters: [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]) { (result: Result<FixerJSON, NetworkError>) in
             guard case .failure(let error) = result else {
                 XCTFail("testGetCurrencyShouldPostFailedCallbackIfNodData Fail")
                 return
@@ -53,16 +61,14 @@ class FixerServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    // FIXME: - Finish to set test
     // MARK: - Incorrect response
     func testGetCurrencyShouldPostFailedCallbackIfIncorrectResponse() {
         // Given
-        let fixer = FixerService(
-            session: URLSessionFake(data: FakeResponseData.fixerCorrectData, response: FakeResponseData.responseKO, error: nil))
+        let fixer = HTTPClient(httpEngine: HTTPEngine(session: URLSessionFake(data: FakeResponseData.fixerCorrectData, response: FakeResponseData.responseKO, error: nil)))
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
-        
-        fixer.getCurrency(currency: "USD")  { result in
+
+        fixer.request(baseURL: url, parameters: [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]) { (result: Result<FixerJSON, NetworkError>) in
             guard case .failure(let error) = result else {
                 XCTFail("testGetCurrencyShouldPostFailedCallbackIfIncorrectResponse")
                 return
@@ -72,46 +78,45 @@ class FixerServiceTestCase: XCTestCase {
         }
         wait(for: [expectation], timeout: 0.01)
     }
-    
+
     // MARK: - Undecodable data
     func testGetCurrencyShouldPostFailedCallbackIfIncorrectData() {
         // Given
-        let fixer = FixerService(
-            session: URLSessionFake(data: FakeResponseData.incorrectData, response: FakeResponseData.responseOK, error: nil))
+        let fixer = HTTPClient(httpEngine: HTTPEngine(session: URLSessionFake(data: FakeResponseData.incorrectData, response: FakeResponseData.responseOK, error: nil)))
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
-        
-        fixer.getCurrency(currency: "USD") { result in
+
+        fixer.request(baseURL: url, parameters: [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]) { (result: Result<FixerJSON, NetworkError>) in
             guard case .failure(let error) = result else {
                 XCTFail("testGetCurrencyShouldPostFailedCallbackIfIncorrectData")
                 return
             }
-            
+
             XCTAssertNotNil(error)
             //Then
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
     }
-    
+
     // MARK: - Success
     func testGetCurrencyShouldPostSuccessCallbackIfNoMissingData() {
         // Given
-        let fixer = FixerService(
-            session: URLSessionFake(data: FakeResponseData.fixerCorrectData, response: FakeResponseData.responseOK, error: nil))
+        let fixer = HTTPClient(httpEngine: HTTPEngine(session: URLSessionFake(data: FakeResponseData.fixerCorrectData, response: FakeResponseData.responseOK, error: nil)))
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change")
-        
-        fixer.getCurrency(currency: "USD") { result in
+
+        fixer.request(baseURL: url, parameters: [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]) { (result: Result<FixerJSON, NetworkError>) in
             guard case .success(let data) = result else {
-                XCTFail("testGetCurrencyShouldPostSuccessCallbackIfNoMissingData")
+                XCTFail("testFixerShouldPostFailedCallbackError")
                 return
             }
-            
-            XCTAssertEqual(data, 1.120222)
-            expectation.fulfill()
 
+            XCTAssertEqual(data.rates["USD"], 1.120222)
+            // Then
+            expectation.fulfill()
         }
+
         wait(for: [expectation], timeout: 0.01)
     }
 }

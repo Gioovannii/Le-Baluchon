@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WeatherData {
+struct CityData {
     
     // MARK: - Properties
     
@@ -16,17 +16,11 @@ struct WeatherData {
     let cityName: String
     let temperature: Double
     
-    let conditionIdParis: Int
-    let cityNameParis: String
-    let temperatureParis: Double
-    
     // Convert temperature into String to one decimal number
     var temperatureString: String { return String(format: "%.1f", temperature) }
-    var temperatureStringParis: String { return String(format: "%.1f", temperatureParis) }
     
     // check with calculate properties which value should be return to set imageView
     var conditionName: String { getCondition(to: conditionId) }
-    var conditionNameParis: String { getCondition(to: conditionIdParis) }
     
     // Check the weather then give back image to show
     func getCondition(to id: Int) -> String {

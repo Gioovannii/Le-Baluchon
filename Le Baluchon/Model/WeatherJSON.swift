@@ -9,6 +9,7 @@
 import Foundation
 
 struct WeatherJSON: Decodable {
+    let cnt: Int
     let list: [List]
 }
 

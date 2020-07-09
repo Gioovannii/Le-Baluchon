@@ -52,15 +52,15 @@ final class TranslateViewController: UIViewController {
             switch result {
             case .success(let text):
                 DispatchQueue.main.async {
-                guard text.data.translations[0].detectedSourceLanguage == "fr" else {
-                    self.presentAlert(title: "In French please", message: "")
-                    self.loadingUserButton.setTitle("You missed it!", for: .normal)
-                    self.textOutputLabel.text = "In french please"
-                    return
-                }
-                
-                print(text)
-                print(text.data.translations[0].translatedText)
+                    guard text.data.translations[0].detectedSourceLanguage == "fr" else {
+                        self.presentAlert(title: "In French please", message: "")
+                        self.loadingUserButton.setTitle("You missed it!", for: .normal)
+                        self.textOutputLabel.text = "In french please"
+                        return
+                    }
+                    
+                    print(text)
+                    print(text.data.translations[0].translatedText)
                     self.loadingUserButton.setTitle("Here youre translation", for: .normal)
                     self.textOutputLabel.text = text.data.translations[0].translatedText
                 }
@@ -77,10 +77,10 @@ final class TranslateViewController: UIViewController {
 
 extension TranslateViewController: UITextViewDelegate {
     // MARK: - Text Field
-       
-       func textViewDidBeginEditing(_ textView: UITextView) {
-           loadingUserButton.setTitle("Get translation", for: .normal)
-           inputTextView.text = ""
-       }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        loadingUserButton.setTitle("Get translation", for: .normal)
+        inputTextView.text = ""
+    }
 }
 

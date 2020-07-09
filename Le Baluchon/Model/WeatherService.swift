@@ -12,8 +12,8 @@ enum NetworkError: Error {
     case incorrectResponse
     case undecodableData
     case badInput
-  
-
+    
+    
     var description: String {
         switch self {
         case .noData:
@@ -29,63 +29,30 @@ enum NetworkError: Error {
 }
 class WeatherService {
     //MARK: - Properties.
-    let session: URLSession
-    var task: URLSessionDataTask?
+    let httpClient: HTTPClient
+    var citiesData = [CityData]()
     
-    init(session: URLSession = URLSession(configuration: .default)) {
-        self.session = session
+    init(httpClient: HTTPClient = HTTPClient()) {
+        self.httpClient = httpClient
     }   
     
     //MARK: - Network Call.
-    func getWeatherData(callback: @escaping (Result<WeatherData, NetworkError>) -> Void) {
+    func getWeatherData(callback: @escaping (Result<[CityData], NetworkError>) -> Void) {
         
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?id=5128581%2C2968815&appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric") else { return }
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group") else { return }
+
         
-        task?.cancel()
-        // Give the session a task
-        task = session.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                callback(.failure(.noData))
-                return
+        httpClient.request(baseURL: url, parameters: [("id", "5128581,2968815"), ("appid", "17121490b9e3ea8f4d54dc0b563f9fb2"), ("units", "metric")]) { (result: Result<WeatherJSON, NetworkError>) in
+            switch result {
+            case .success(let data):
+                for i in 0..<data.cnt{
+                    let cityData = CityData(conditionId: data.list[i].weather[0].id, cityName: data.list[i].name, temperature: data.list[i].main.temp)
+                    self.citiesData.append(cityData)
+                }
+                callback(.success(self.citiesData))
+            case .failure(let error):
+                callback(.failure(error))
             }
-            
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                callback(.failure(.incorrectResponse))
-                return
-            }
-            
-            guard let responseDecoded = self.parseJSON(data) else {
-                callback(.failure(.undecodableData))
-                return
-            }
-            callback(.success(responseDecoded))
-        }
-        // start task
-        task?.resume()
-    }
-    
-    //MARK: - parse Safely.
-    /// take the response then handle errors
-    func parseJSON(_ weatherData: Data) -> WeatherData? {
-        let decoder = JSONDecoder()
-        do {
-            let decoderData = try decoder.decode(WeatherJSON.self, from: weatherData)
-            
-            let id = decoderData.list[0].weather[0].id
-            let temp = decoderData.list[0].main.temp
-            let name = decoderData.list[0].name
-            
-            let idParis = decoderData.list[1].weather[0].id
-            let tempParis = decoderData.list[1].main.temp
-            let nameParis = decoderData.list[1].name
-            
-            let weather = WeatherData(conditionId: id, cityName: name, temperature: temp, conditionIdParis: idParis, cityNameParis: nameParis, temperatureParis: tempParis)
-            
-            return weather
-            
-        } catch {
-            print(error)
-            return nil
         }
     }
 }

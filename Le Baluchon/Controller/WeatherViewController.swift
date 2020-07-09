@@ -8,21 +8,19 @@
 
 import UIKit
 
-final class WeatherViewController: UIViewController {
+class WeatherViewController: UIViewController {
     
     //MARK:- IBOutlets
     @IBOutlet var conditionImageView: [UIImageView]!
     @IBOutlet var temperatureLabel: [UILabel]!
     @IBOutlet var cityLabel: [UILabel]!
-  
-//    private var weatherService = WeatherService()
+    
+    //    private var weatherService = WeatherService()
     private var httpClient: HTTPClient = HTTPClient()
-    
-    
-    
+    var weatherService = WeatherService()
+    var weathersData = [CityData]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,56 +36,24 @@ final class WeatherViewController: UIViewController {
     }
     
     func networkCall() {
-        
-//         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?id=5128581%2C2968815&appid=17121490b9e3ea8f4d54dc0b563f9fb2&units=metric") else { return }
-        
-        
-        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group?") else { return }
-        
-        //                      ☣️ ajout de 52 apres le %2 de id  ici |
-        httpClient.request(baseURL: url, parameters: [("id", "5128581%2C2968815"), ("appid", "17121490b9e3ea8f4d54dc0b563f9fb2"), ("units", "metric")]) { (result: Result<WeatherJSON, NetworkError>) in
+        weatherService.getWeatherData { (result) in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {
-                     
-                    print(data)
+                    self.update(citiesData: data)
                 }
-                
             case .failure(let error):
-                print(error)
-                self.presentAlert(title: error.description, message: "")
+                self.presentAlert(title: "error", message: error.description)
             }
         }
-
-       
-        
-        
-//
-//        WeatherService().getWeatherData() { result in
-//            switch result {
-//            case .success(let data):
-//                DispatchQueue.main.async {
-//                    self.update(weather: data)
-//                    print("WeatherData Loaded")
-//                    print(data)
-//                }
-//            case .failure(let error):
-//                print(error)
-//                self.presentAlert(title: "Heyyy", message: "Your request has gone wrong")
-//            }
-//       }
     }
     
-    private func update(weather: WeatherData) {
-        
-        cityLabel[0].text = weather.cityNameParis
-        temperatureLabel[0].text = weather.temperatureStringParis
-        conditionImageView[0].image = UIImage(imageLiteralResourceName: weather.conditionNameParis)
-        
-        
-        cityLabel[1].text = weather.cityName
-        temperatureLabel[1].text = weather.temperatureString
-        conditionImageView[1].image = UIImage(imageLiteralResourceName: weather.conditionName)
+    private func update(citiesData: [CityData]) {
+        for i in 0...1 {
+            cityLabel[i].text = citiesData[i].cityName
+            temperatureLabel[i].text = citiesData[i].temperatureString
+            conditionImageView[i].image = UIImage(imageLiteralResourceName: citiesData[i].getCondition(to: citiesData[i].conditionId))
+        }
     }
 }
 
