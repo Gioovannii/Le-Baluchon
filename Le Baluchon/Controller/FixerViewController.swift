@@ -16,10 +16,10 @@ final class FixerViewController: UIViewController {
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var answerLabel: UILabel!
     
-    
-    private let httpClient: HTTPClient = HTTPClient()
-    
     // MARK: - Properties
+    private let httpClient: HTTPClient = HTTPClient()
+    private let fixer = FixerService()
+
     var amount: Double = 0.00
     var rate: Double = 0.00
     var answer : Double = 0.00
@@ -42,7 +42,6 @@ final class FixerViewController: UIViewController {
         
         amountTextField.resignFirstResponder()
         
-        //        let currency = "USD"
         guard let url = URL(string: "http://data.fixer.io/api/latest?") else { return }
         
         httpClient.request(baseURL: url, parameters: [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]) { [unowned self] (result: Result<FixerJSON, NetworkError>) in
@@ -56,16 +55,15 @@ final class FixerViewController: UIViewController {
                     
                     guard let result = self.updateResult(self.amount, self.rate) else { return }
                     
-                    let resultStr = self.formatResult(number: result)
-                    let format = self.formatResult(number: self.amount)
+                    let resultStr = self.fixer.formatResult(number: result)
+                    let format = self.fixer.formatResult(number: self.amount)
                     
                     self.answerLabel.text = "\(format) EUR = \(resultStr) USD"
                     self.amountTextField.text = ""
                     
-                    
                 }
             case .failure(let error):
-                print(error.description)
+                self.presentAlert(title: "Error", message: error.description)
                 
             }
         }
@@ -96,6 +94,7 @@ extension FixerViewController {
 extension FixerViewController {
     private func convertResponseToDouble() -> Double {
         guard let amountString = amountTextField.text else { return 0 }
+        
         print("amount string", amountString)
         
         guard let amount = Double(amountString) else {
@@ -114,23 +113,14 @@ extension FixerViewController {
         print("\(amountUser) EUR = \(answer) USD")
         return answer
     }
- 
-    /// Format to 3 digit
-    private func formatResult(number: Double) -> String {
-        let formater = NumberFormatter()
-        formater.maximumFractionDigits = 3
-        
-        guard let resultFormated = formater.string(from: NSNumber(value: number)) else { return String()}
-        return resultFormated
-    }
 }
 
 extension UIViewController {
     /// Alert for handle errors
-       func presentAlert(title: String, message: String) {
+    func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-           alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-           present(alert, animated: true)
-       }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alert, animated: true)
+    }
 }
 

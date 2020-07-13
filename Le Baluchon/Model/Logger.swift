@@ -35,6 +35,7 @@ struct Logger {
         Path : \(path)
         Query : \(query)
         """
+        
         print("Request")
         print(logOutput)
     }

@@ -18,8 +18,9 @@ final class TranslateViewController: UIViewController {
     
     // MARK: - Properties
     private var httpClient: HTTPClient = HTTPClient()
-    var target = "en"
-    let customBlue = UIColor(red: 0.614, green: 0.697, blue: 0.984, alpha: 1)
+    private let translateService = TranslationService()
+    private var target = "en"
+    private let customBlue = UIColor(red: 0.614, green: 0.697, blue: 0.984, alpha: 1)
     
     
     // MARK: - Life Cycle
@@ -28,6 +29,7 @@ final class TranslateViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // MARK: - Actions
     @IBAction func englishButtonTap(_ sender: Any) {
         englishOutletButton.attributedTitle(for: .disabled)
         englishOutletButton.backgroundColor = customBlue
@@ -47,8 +49,7 @@ final class TranslateViewController: UIViewController {
         
         inputTextView.resignFirstResponder()
         
-        guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2?") else { return }
-        httpClient.request(baseURL: url, parameters: [("key", "AIzaSyA7U25Y2ynHepATFgDdEBAHjSvaVIK9WTQ"), ("q", text), ("target", target), ("model", "base")]) { (result: Result<TranslateJSON, NetworkError>) in
+        translateService.getCurrency(textInput: text, target: target) { (result)  in
             switch result {
             case .success(let text):
                 DispatchQueue.main.async {
@@ -78,7 +79,7 @@ final class TranslateViewController: UIViewController {
 extension TranslateViewController: UITextViewDelegate {
     // MARK: - Text Field
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
+    internal func textViewDidBeginEditing(_ textView: UITextView) {
         loadingUserButton.setTitle("Get translation", for: .normal)
         inputTextView.text = ""
     }

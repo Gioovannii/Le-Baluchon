@@ -161,15 +161,15 @@
 			isa = PBXGroup;
 			children = (
 				7B6069EC24ADF15C006EF207 /* HTTPEngine.swift */,
-				7B6069EE24AF23C6006EF207 /* Logger.swift */,
 				7B46CBC124B2DF2300425AAC /* HTTPClient.swift */,
-				0426BCB92489130D00E48D04 /* FixerJSON.swift */,
-				7B9EC66724A708E500EEC220 /* TranslateJSON.swift */,
-				04D983E2247A712800ED1852 /* WeatherService.swift */,
-				04D983E4247A74B500ED1852 /* WeatherJSON.swift */,
-				04D983E6247A76F000ED1852 /* CityData.swift */,
+				7B6069EE24AF23C6006EF207 /* Logger.swift */,
 				0426BCB72488FD3E00E48D04 /* FixerService.swift */,
+				0426BCB92489130D00E48D04 /* FixerJSON.swift */,
+				04D983E2247A712800ED1852 /* WeatherService.swift */,
+				04D983E6247A76F000ED1852 /* CityData.swift */,
+				04D983E4247A74B500ED1852 /* WeatherJSON.swift */,
 				7B40DF1024948270001126D4 /* TranslationService.swift */,
+				7B9EC66724A708E500EEC220 /* TranslateJSON.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
