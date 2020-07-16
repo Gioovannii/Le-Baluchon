@@ -9,7 +9,9 @@
 import UIKit
 
 final class TranslateViewController: UIViewController {
+    
     // MARK: - Outlet
+    
     @IBOutlet weak var inputTextView: UITextView!
     @IBOutlet weak var textOutputLabel: UILabel!
     @IBOutlet weak var loadingUserButton: UIButton!
@@ -17,7 +19,7 @@ final class TranslateViewController: UIViewController {
     @IBOutlet weak var mandarinOutletButton: UIButton!
     
     // MARK: - Properties
-    private var httpClient: HTTPClient = HTTPClient()
+    
     private let translateService = TranslationService()
     private var target = "en"
     private let customBlue = UIColor(red: 0.614, green: 0.697, blue: 0.984, alpha: 1)
@@ -30,6 +32,7 @@ final class TranslateViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
     @IBAction func englishButtonTap(_ sender: Any) {
         englishOutletButton.attributedTitle(for: .disabled)
         englishOutletButton.backgroundColor = customBlue
@@ -43,13 +46,14 @@ final class TranslateViewController: UIViewController {
     }
     
     // MARK: - Action
+    
     @IBAction func translationTap(_ sender: UIButton) {
         loadingUserButton.setTitle("Loading", for: .normal)
         guard let text = inputTextView.text else { return }
         
         inputTextView.resignFirstResponder()
         
-        translateService.getCurrency(textInput: text, target: target) { (result)  in
+        translateService.getCurrency(textInput: text, target: target) { [unowned self] result  in
             switch result {
             case .success(let text):
                 DispatchQueue.main.async {

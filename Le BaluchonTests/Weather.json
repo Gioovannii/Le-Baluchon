@@ -9,36 +9,36 @@
             "sys": {
                 "country": "US",
                 "timezone": -14400,
-                "sunrise": 1591090000,
-                "sunset": 1591143714
+                "sunrise": 1594805876,
+                "sunset": 1594859146
             },
             "weather": [
                 {
-                    "id": 800,
-                    "main": "Clear",
-                    "description": "clear sky",
-                    "icon": "01d"
+                    "id": 803,
+                    "main": "Clouds",
+                    "description": "broken clouds",
+                    "icon": "04n"
                 }
             ],
             "main": {
-                "temp": 16.4,
-                "feels_like": 14.2,
-                "temp_min": 15,
-                "temp_max": 18.33,
-                "pressure": 1019,
-                "humidity": 59
+                "temp": 22.57,
+                "feels_like": 23.08,
+                "temp_min": 22,
+                "temp_max": 23,
+                "pressure": 1024,
+                "humidity": 78
             },
-            "visibility": 16093,
+            "visibility": 10000,
             "wind": {
-                "speed": 2.6,
-                "deg": 260
+                "speed": 3.6,
+                "deg": 140
             },
             "clouds": {
-                "all": 1
+                "all": 75
             },
-            "dt": 1591100164,
+            "dt": 1594865734,
             "id": 5128581,
-            "name": "New York"
+            "name": "New York City"
         },
         {
             "coord": {
@@ -48,33 +48,34 @@
             "sys": {
                 "country": "FR",
                 "timezone": 7200,
-                "sunrise": 1591069858,
-                "sunset": 1591127199
+                "sunrise": 1594872268,
+                "sunset": 1594928910
             },
             "weather": [
                 {
-                    "id": 800,
-                    "main": "Clear",
-                    "description": "clear sky",
-                    "icon": "01d"
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
                 }
             ],
             "main": {
-                "temp": 27.81,
-                "feels_like": 25.33,
-                "temp_min": 27,
-                "temp_max": 28.33,
-                "pressure": 1016,
-                "humidity": 30
+                "temp": 16.33,
+                "feels_like": 15.52,
+                "temp_min": 15,
+                "temp_max": 17.22,
+                "pressure": 1019,
+                "humidity": 82
             },
             "visibility": 10000,
             "wind": {
-                "speed": 3.1
+                "speed": 2.6,
+                "deg": 280
             },
             "clouds": {
-                "all": 5
+                "all": 90
             },
-            "dt": 1591099777,
+            "dt": 1594865366,
             "id": 2968815,
             "name": "Paris"
         }

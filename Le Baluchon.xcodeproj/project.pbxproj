@@ -33,6 +33,7 @@
 		7B5F70D824ACA62700A3802B /* TranslateServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F70D724ACA62700A3802B /* TranslateServiceTestCase.swift */; };
 		7B6069ED24ADF15C006EF207 /* HTTPEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6069EC24ADF15C006EF207 /* HTTPEngine.swift */; };
 		7B6069EF24AF23C6006EF207 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6069EE24AF23C6006EF207 /* Logger.swift */; };
+		7B86D7A824BFF8D40043382E /* HTTPEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B86D7A724BFF8D40043382E /* HTTPEngineTests.swift */; };
 		7B9EC66824A708E500EEC220 /* TranslateJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9EC66724A708E500EEC220 /* TranslateJSON.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		7B5F70D724ACA62700A3802B /* TranslateServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateServiceTestCase.swift; sourceTree = "<group>"; };
 		7B6069EC24ADF15C006EF207 /* HTTPEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEngine.swift; sourceTree = "<group>"; };
 		7B6069EE24AF23C6006EF207 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		7B86D7A724BFF8D40043382E /* HTTPEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPEngineTests.swift; sourceTree = "<group>"; };
 		7B9EC66724A708E500EEC220 /* TranslateJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 			children = (
 				040FD9A52486865600B80C8E /* FakeResponseData.swift */,
 				040FD9A7248686AA00B80C8E /* URLSessionFake.swift */,
+				7B86D7A724BFF8D40043382E /* HTTPEngineTests.swift */,
 				7B40DF122495CB57001126D4 /* FixerServiceTestCase.swift */,
 				7B5CE5F524936EE8006B6259 /* Fixer.json */,
 				040FD99B248685AD00B80C8E /* WeatherServiceTestCase.swift */,
@@ -296,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B86D7A824BFF8D40043382E /* HTTPEngineTests.swift in Sources */,
 				040FD99C248685AD00B80C8E /* WeatherServiceTestCase.swift in Sources */,
 				7B40DF132495CB57001126D4 /* FixerServiceTestCase.swift in Sources */,
 				040FD9A8248686AA00B80C8E /* URLSessionFake.swift in Sources */,

@@ -36,7 +36,7 @@ class WeatherViewController: UIViewController {
     }
     
     func networkCall() {
-        weatherService.getWeatherData { (result) in
+        weatherService.getWeatherData { [unowned self] result in
             switch result {
             case .success(let data):
                 DispatchQueue.main.async {

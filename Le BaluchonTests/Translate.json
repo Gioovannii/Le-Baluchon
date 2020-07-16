@@ -1,8 +1,8 @@
-{
-  "data": {
     "translations": [
       {
-        "translatedText": "Hello"
+        "translatedText": "Yes",
+        "detectedSourceLanguage": "fr",
+        "model": "base"
       }
     ]
   }

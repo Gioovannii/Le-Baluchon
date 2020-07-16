@@ -1,9 +1,9 @@
 {
     "success": true,
-    "timestamp": 1592811965,
+    "timestamp": 1594867986,
     "base": "EUR",
-    "date": "2020-06-22",
+    "date": "2020-07-16",
     "rates": {
-        "USD": 1.120222
+        "USD": 1.140281
     }
 }
