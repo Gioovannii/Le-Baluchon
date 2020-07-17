@@ -10,7 +10,15 @@
 import XCTest
 
 class WeatherServiceTestCase: XCTestCase {
-    
+    let url = URL(string: "https://api.openweathermap.org/data/2.5/group")
+    let parameters = [("id", "5128581,2968815"), ("appid", "17121490b9e3ea8f4d54dc0b563f9fb2"), ("units", "metric")]
+    func testIfError() {
+        let weather = WeatherService(httpClient: HTTPClient(httpEngine: HTTPEngine(session: URLSessionFake(data: FakeResponseData.incorrectData, response: FakeResponseData.responseOK, error: FakeResponseData.error))))
+        
+        weather.getWeatherData { (result: Result<[CityData], NetworkError>) in
+            <#code#>
+        }
+    }
 //    // MARK: - 1. Error
 //    func testGetWeatherShoulPostFailedCallBackError() {
 //        // Given

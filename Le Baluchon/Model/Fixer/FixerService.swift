@@ -34,18 +34,6 @@ final class FixerService {
     }
 }
 
-extension FixerService {
-//    
-//    /// Format to 3 digit
-//       public func formatResult(number: Double) -> String {
-//           let formater = NumberFormatter()
-//           formater.maximumFractionDigits = 3
-//
-//           guard let resultFormated = formater.string(from: NSNumber(value: number)) else { return String()}
-//           return resultFormated
-//       }
-}
-
 extension Double {
     var stringDigitFormat: String {
         let formater = NumberFormatter()
