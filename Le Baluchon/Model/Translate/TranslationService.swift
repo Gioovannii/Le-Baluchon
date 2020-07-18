@@ -20,7 +20,7 @@ class TranslationService {
         
         guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2?") else { return }
         
-        httpClient.request(baseURL: url, parameters: [("key", "AIzaSyA7U25Y2ynHepATFgDdEBAHjSvaVIK9WTQ"), ("q", textInput), ("target", target), ("model", "base")]) { (result: Result<TranslateJSON, NetworkError>) in
+        httpClient.request(baseURL: url, parameters: [("key", "AIzaSyDcD9KTh5XVcJoIlVtNSIl4Prj-4kSmEj8"), ("q", textInput), ("target", target), ("model", "base")]) { (result: Result<TranslateJSON, NetworkError>) in
             
             switch result {
             case .success(let text):
