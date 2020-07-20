@@ -63,9 +63,8 @@ final class TranslateViewController: UIViewController {
                         self.textOutputLabel.text = "In french please"
                         return
                     }
-                    
-                    print(text)
-                    print(text.data.translations[0].translatedText)
+
+                    print("Text Translated = \(text.data.translations[0].translatedText)")
                     self.loadingUserButton.setTitle("Here youre translation", for: .normal)
                     self.textOutputLabel.text = text.data.translations[0].translatedText
                 }

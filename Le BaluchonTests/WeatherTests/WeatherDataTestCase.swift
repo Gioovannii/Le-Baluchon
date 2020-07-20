@@ -10,129 +10,141 @@ import XCTest
 
 class WeatherDataTestCase: XCTestCase {
     
-//    func setConditionId(conditionId: Int, conditionParis: Int) -> WeatherData {
-//        let weather = WeatherData(conditionId: conditionId, cityName: "New york City", temperature: 20.192, conditionIdParis: conditionParis, cityNameParis: "Paris", temperatureParis: 20.189)
-//
-//        return weather
-//    }
-//
-//    // MARK: - Temperatures
-//    func test1() {
-//        let weatherData = WeatherData(conditionId: 800, cityName: "New york City", temperature: 20.192, conditionIdParis: 800, cityNameParis: "Paris", temperatureParis: 20.189)
-//
-//        XCTAssertEqual(weatherData.temperatureString, "20.2")
-//    }
-//
-//    func test2() {
-//           let weatherData = WeatherData(conditionId: 800, cityName: "New york City", temperature: 20.192, conditionIdParis: 800, cityNameParis: "Paris", temperatureParis: 20.189)
-//
-//           XCTAssertEqual(weatherData.temperatureStringParis, "20.2")
-//       }
-//
-//    // MARK: - Bolt
-//       func test3() {
-//       let weatherData =  setConditionId(conditionId: 210, conditionParis: 800)
-//
-//           XCTAssertEqual(weatherData.conditionName, "bolt")
-//       }
-//
-//       func test4() {
-//              let weatherData = setConditionId(conditionId: 800, conditionParis: 210)
-//
-//              XCTAssertEqual(weatherData.conditionNameParis, "bolt")
-//          }
-//
-//    // MARK: - Drizzle
-//   func test7() {
-//
-//    let weatherData = setConditionId(conditionId: 310, conditionParis: 800)
-//
-//          XCTAssertEqual(weatherData.conditionName, "drizzle")
-//      }
-//
-//      func test8() {
-//           let weatherData = setConditionId(conditionId: 800, conditionParis: 310)
-//
-//          XCTAssertEqual(weatherData.conditionNameParis, "drizzle")
-//      }
-//    // MARK: - Rain
-//    func test9() {
-//         let weatherData = setConditionId(conditionId: 510, conditionParis: 800)
-//
-//        XCTAssertEqual(weatherData.conditionName, "rain")
-//    }
-//
-//    func test10() {
-//         let weatherData = setConditionId(conditionId: 800, conditionParis: 510)
-//
-//        XCTAssertEqual(weatherData.conditionNameParis, "rain")
-//    }
-//
-//    // MARK: - Snow
-//    func test11() {
-//         let weatherData = setConditionId(conditionId: 610, conditionParis: 800)
-//
-//        XCTAssertEqual(weatherData.conditionName, "snow")
-//    }
-//
-//    func test12() {
-//         let weatherData = setConditionId(conditionId: 800, conditionParis: 610)
-//
-//        XCTAssertEqual(weatherData.conditionNameParis, "snow")
-//    }
-//
-//
-//    // MARK: - Fog
-//    func test13() {
-//            let weatherData = setConditionId(conditionId: 710, conditionParis: 800)
-//
-//           XCTAssertEqual(weatherData.conditionName, "fog")
-//       }
-//
-//       func test14() {
-//            let weatherData = setConditionId(conditionId: 800, conditionParis: 710)
-//
-//           XCTAssertEqual(weatherData.conditionNameParis, "fog")
-//       }
-//
-//
-//
-//    // MARK: - Sunny
-//       func test15() {
-//               let weatherData = setConditionId(conditionId: 800, conditionParis: 800)
-//
-//              XCTAssertEqual(weatherData.conditionName, "sunny")
-//          }
-//
-//          func test16() {
-//               let weatherData = setConditionId(conditionId: 800, conditionParis: 800)
-//
-//              XCTAssertEqual(weatherData.conditionNameParis, "sunny")
-//          }
-//
-//    // MARK: - Cloud
-//    func test17() {
-//         let weatherData = setConditionId(conditionId: 802, conditionParis: 800)
-//
-//        XCTAssertEqual(weatherData.conditionName, "cloud")
-//    }
-//
-//    func test18() {
-//         let weatherData = setConditionId(conditionId: 800, conditionParis: 802)
-//
-//        XCTAssertEqual(weatherData.conditionNameParis, "cloud")
-//    }
-//
-//    // MARK: - Default
-//    func test19() {
-//         let weatherData = setConditionId(conditionId: 810, conditionParis: 800)
-//
-//        XCTAssertEqual(weatherData.conditionName, "")
-//    }
-//
-//    func test20() {
-//         let weatherData = setConditionId(conditionId: 800, conditionParis: 810)
-//
-//        XCTAssertEqual(weatherData.conditionNameParis, "")
-//    }
+    let tempNewYork = 22.57
+    let tempParis = 20.189
+    
+    // MARK: - Temperatures
+    
+    func testGivenTemperatureString_WhenSettingInstance_ThenAssertTransform() {
+        
+        let cityData = CityData(conditionId: 800, cityName: "Paris", temperature: tempParis)
+        
+        
+        XCTAssertEqual(cityData.temperatureString, "20.2")
+    }
+    
+    // MARK: - Bolt
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameBoltNewYork() {
+        let cityData = CityData(conditionId: 210, cityName: "New York", temperature: tempNewYork)
+        
+        XCTAssertEqual(cityData.conditionName, "bolt")
+    }
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameBoltParis() {
+        let cityData = CityData(conditionId: 210, cityName: "Paris", temperature: tempParis)
+        
+        XCTAssertEqual(cityData.conditionName, "bolt")
+    }
+    
+    // MARK: - Drizzle
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameDrizzleNewYork() {
+        let cityData = CityData(conditionId: 310, cityName: "New York", temperature: tempNewYork)
+        
+        XCTAssertEqual(cityData.conditionName, "drizzle")
+    }
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameDrizzleParis() {
+        let cityData = CityData(conditionId: 310, cityName: "Paris", temperature: tempParis)
+        
+        XCTAssertEqual(cityData.conditionName, "drizzle")
+    }
+    
+    // MARK: - Rain
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameRainNewYork() {
+        let cityData = CityData(conditionId: 510, cityName: "New York", temperature: tempNewYork)
+        
+        XCTAssertEqual(cityData.conditionName, "rain")
+    }
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameRainParis() {
+        let cityData = CityData(conditionId: 510, cityName: "Paris", temperature: tempParis)
+        
+        XCTAssertEqual(cityData.conditionName, "rain")
+    }
+    
+    
+    // MARK: - Snow
+    
+    
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameSnowNewYork() {
+        let cityData = CityData(conditionId: 610, cityName: "New York", temperature: tempNewYork)
+        
+        XCTAssertEqual(cityData.conditionName, "snow")
+    }
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameSnowParis() {
+        
+        let cityData = CityData(conditionId: 610, cityName: "Paris", temperature: tempParis)
+        
+        XCTAssertEqual(cityData.conditionName, "snow")
+    }
+    
+    
+    // MARK: - Fog
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameFogNewYork() {
+        let cityData = CityData(conditionId: 710, cityName: "New York", temperature: 20.189)
+        
+        XCTAssertEqual(cityData.conditionName, "fog")
+    }
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameFogParis() {
+        let cityData = CityData(conditionId: 710, cityName: "Paris", temperature: 20.189)
+        
+        XCTAssertEqual(cityData.conditionName, "fog")
+    }
+    
+    // MARK: - Sunny
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameSunnyNewYork() {
+        
+        let cityData = CityData(conditionId: 800, cityName: "New York", temperature: 20.189)
+        
+        XCTAssertEqual(cityData.conditionName, "sunny")
+    }
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameSunnyParis() {
+        
+        let cityData = CityData(conditionId: 800, cityName: "Paris", temperature: 20.189)
+        
+        XCTAssertEqual(cityData.conditionName, "sunny")
+    }
+    
+    
+    // MARK: - Cloud
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameCloudNewYork() {
+        
+        let cityData = CityData(conditionId: 802, cityName: "New York", temperature: 20.189)
+        
+        XCTAssertEqual(cityData.conditionName, "cloud")
+    }
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameCloudParis() {
+        
+        let cityData = CityData(conditionId: 802, cityName: "Paris", temperature: 20.189)
+        
+        XCTAssertEqual(cityData.conditionName, "cloud")
+    }
+    
+    
+    // MARK: - Default
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameDefault() {
+        
+        let cityData = CityData(conditionId: 810, cityName: "New York", temperature: 20.189)
+        
+        XCTAssertEqual(cityData.conditionName, "")
+    }
+    
+    func testGivenGetWeather_WhenSettingInstance_ThenTestConditionNameDefaultParis() {
+        
+        let cityData = CityData(conditionId: 810, cityName: "Paris", temperature: 20.189)
+        
+        XCTAssertEqual(cityData.conditionName, "")
+    }
 }
