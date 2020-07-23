@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CityData {
+ struct CityData {
     
     // MARK: - Properties
     

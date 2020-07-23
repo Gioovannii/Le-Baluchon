@@ -7,12 +7,13 @@
 //
 
 import Foundation
-class URLSessionFake: URLSession {
+final class URLSessionFake: URLSession {
     
  //MARK: - Properties.
-    var data: Data?
-    var response: URLResponse?
-    var error: Error?
+    
+    private var data: Data?
+    private var response: URLResponse?
+    private var error: Error?
     
     init(data: Data?, response: URLResponse?, error: Error?) {
         self.data = data
@@ -28,12 +29,12 @@ class URLSessionFake: URLSession {
 }
 
 // MARK: - DataTasks
-class URLSessionDataTaskFake: URLSessionDataTask {
-    var completionHandler: ((Data?, URLResponse?, Error?) -> Void)?
+final class URLSessionDataTaskFake: URLSessionDataTask {
+    private var completionHandler: ((Data?, URLResponse?, Error?) -> Void)?
     
-    var data: Data?
-    var urlResponse: URLResponse?
-    var responseError: Error?
+    private var data: Data?
+    private var urlResponse: URLResponse?
+    private var responseError: Error?
     
     init(data: Data?, urlResponse: URLResponse?, responseError: Error?, completionHandler: ((Data?, URLResponse?, Error?) -> Void)?) {
         self.data = data

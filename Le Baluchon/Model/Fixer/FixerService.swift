@@ -10,8 +10,8 @@ import Foundation
 
 final class FixerService {
     
-    let httpClient: HTTPClient
-    var task: URLSessionDataTask?
+    private let httpClient: HTTPClient
+    private var task: URLSessionDataTask?
     
     init(httpClient: HTTPClient = HTTPClient()){
         self.httpClient = httpClient

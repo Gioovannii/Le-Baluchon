@@ -11,17 +11,19 @@ import UIKit
 final class FixerViewController: UIViewController {
     
     // MARK: - Outlet
+    
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var answerLabel: UILabel!
     
     // MARK: - Properties
-    private let fixer = FixerService()
     
+    private let fixer = FixerService()
     private var amount: Double = 0.00
     private var rate: Double = 0.00
     private var answer : Double = 0.00
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(FixerViewController.keyboardWillShow),
@@ -33,6 +35,7 @@ final class FixerViewController: UIViewController {
     }
     
     // MARK: - Action
+    
     /// Network call
     /// - Parameter sender: UI Button pressed
     @IBAction func convertButtonPressed(_ sender: UIButton) {
@@ -44,10 +47,9 @@ final class FixerViewController: UIViewController {
             case .success(let data):
                 DispatchQueue.main.async {
                     guard let usd = data.rates["USD"] else { return }
-                    self.rate = usd
-                    
                     guard let result = self.updateResult(self.amount, self.rate) else { return }
-                    
+
+                    self.rate = usd
                     self.answerLabel.text = "\(self.amount.stringDigitFormat) EUR = \(result.stringDigitFormat) USD"
                     self.amountTextField.text = ""
                 }
@@ -60,14 +62,13 @@ final class FixerViewController: UIViewController {
 }
 
 // MARK: - @objc method to show and hide
+
 extension FixerViewController {
     @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        // if keyboard size is not available for some reason, dont do anything
-        
-        
-        // move the root view up by the distance of keyboard's height
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }  // if keyboard size is not available for some reason, dont do anything
+
         self.view.frame.origin.y = 180 - keyboardSize.height
+        // move the root view up by the distance of keyboard's height
     }
     
     @objc func keyboardWillHide(notification: NSNotification) { self.view.frame.origin.y = 0 }
@@ -75,10 +76,10 @@ extension FixerViewController {
 }
 
 // MARK: - convert and update
+
 extension FixerViewController {
     private func convertResponseToDouble() -> Double {
         guard let amountString = amountTextField.text else { return 0 }
-                
         guard let amount = Double(amountString) else {
             presentAlert(title: "Error", message: "This is not a correct decimal number")
             return 0.0

@@ -11,8 +11,8 @@ import Foundation
 
 class WeatherService {
     //MARK: - Properties.
-    let httpClient: HTTPClient
-    var citiesData = [CityData]()
+    private let httpClient: HTTPClient
+    private var citiesData = [CityData]()
     
     init(httpClient: HTTPClient = HTTPClient()) {
         self.httpClient = httpClient
@@ -20,9 +20,7 @@ class WeatherService {
     
     //MARK: - Network Call.
     func getWeatherData(callback: @escaping (Result<[CityData], NetworkError>) -> Void) {
-        
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group") else { return }
-
         
         httpClient.request(baseURL: url, parameters: [("id", "5128581,2968815"), ("appid", Config.weather), ("units", "metric")])  { [unowned self] (result: Result<WeatherJSON, NetworkError>) in
             switch result {

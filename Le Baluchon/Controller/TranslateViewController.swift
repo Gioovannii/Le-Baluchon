@@ -39,6 +39,7 @@ final class TranslateViewController: UIViewController {
         mandarinOutletButton.backgroundColor = .groupTableViewBackground
         target = "en"
     }
+    
     @IBAction func mandarinButtonTap(_ sender: Any) {
         mandarinOutletButton.backgroundColor = customBlue
         englishOutletButton.backgroundColor = .groupTableViewBackground
@@ -63,7 +64,6 @@ final class TranslateViewController: UIViewController {
                         self.textOutputLabel.text = "In french please"
                         return
                     }
-                    print(text.data.translations[0].translatedText)
                     print("Text Translated = \(text.data.translations[0].translatedText)")
                     self.loadingUserButton.setTitle("Here youre translation", for: .normal)
                     self.textOutputLabel.text = text.data.translations[0].translatedText
@@ -71,7 +71,6 @@ final class TranslateViewController: UIViewController {
                 
             case .failure(let error):
                 DispatchQueue.main.async {
-                    print(error)
                     self.presentAlert(title: error.description, message: "")
                 }
             }

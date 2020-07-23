@@ -8,16 +8,15 @@
 
 import Foundation
 
-class TranslationService {
+final class TranslationService {
     
-    let httpClient: HTTPClient
+    private let httpClient: HTTPClient
     
     init(httpClient: HTTPClient = HTTPClient()) {
         self.httpClient = httpClient
     }
     
     func getTranslation(textInput: String, target: String, callback: @escaping (Result<TranslateJSON, NetworkError>) -> Void) {
-        
         guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2?") else { return }
         
         httpClient.request(baseURL: url, parameters: [("key", Config.translate), ("q", textInput), ("target", target), ("model", "base")]) { (result: Result<TranslateJSON, NetworkError>) in

@@ -8,7 +8,7 @@
 @testable import Le_Baluchon
 import XCTest
 
-class FixerServiceTestCase: XCTestCase {
+final class FixerServiceTestCase: XCTestCase {
     
     // MARK: - GetCurrency Success    
     func testGetCurrencyShouldPostSuccessCallbackIfNoError() {

@@ -11,14 +11,15 @@ import UIKit
 class WeatherViewController: UIViewController {
     
     //MARK:- IBOutlets
+    
     @IBOutlet var conditionImageView: [UIImageView]!
     @IBOutlet var temperatureLabel: [UILabel]!
     @IBOutlet var cityLabel: [UILabel]!
     
-    //    private var weatherService = WeatherService()
     private var httpClient: HTTPClient = HTTPClient()
-    var weatherService = WeatherService()
-    var weathersData = [CityData]()
+    private var weatherService = WeatherService()
+    private var weathersData = [CityData]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -35,7 +36,7 @@ class WeatherViewController: UIViewController {
         presentAlert(title: "Reload", message: "Here we go reload done!")
     }
     
-    func networkCall() {
+    private func networkCall() {
         weatherService.getWeatherData { [unowned self] result in
             switch result {
             case .success(let data):

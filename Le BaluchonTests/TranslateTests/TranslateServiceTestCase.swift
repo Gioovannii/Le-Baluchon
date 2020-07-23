@@ -10,7 +10,7 @@ import XCTest
 
 class TranslateServiceTestCase: XCTestCase {
     
-    func testOk() {
+    func testGetTranslation_ShouldPostCallbackSuccessWhenAlldCorrectData() {
         
         let translate = TranslationService(httpClient: HTTPClient(httpEngine: HTTPEngine(session: URLSessionFake(data: FakeResponseData.translateCorrectData, response: FakeResponseData.responseOK, error: nil))))
         
@@ -28,23 +28,8 @@ class TranslateServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    
-    
-    //        let httpEngine = HTTPEngine.init(session: URLSessionFake(data: FakeResponseData.translateCorrectData, response: FakeResponseData.responseOK, error: nil))
-    //        let translate = TranslationService(httpClient: HTTPClient(httpEngine: httpEngine))
-    //
-    //        translate.getCurrency(textInput: "Oui", target: "en") { (result: Result<TranslateJSON, NetworkError>) in
-    //
-    //
-    //            guard case .success(let text) = result else {
-    //                XCTFail("No text")
-    //                return }
-    //
-    //            XCTAssertNotEqual(text.data.translations[0].translatedText, "Yes")
-    //        }
-    
-    
-    func testError() {
+    func testGetTranslationr_ShouldPostCallbacFailedWhenAlldCorrectData() {
+        
         let httpEngine = HTTPEngine.init(session: URLSessionFake(data: FakeResponseData.incorrectData, response: FakeResponseData.responseKO, error: FakeResponseData.error))
         
         let translate = TranslationService(httpClient: HTTPClient(httpEngine: httpEngine))
@@ -55,4 +40,9 @@ class TranslateServiceTestCase: XCTestCase {
             XCTAssertEqual(error, NetworkError.noData)
         }
     }
+    
+    
+    
+    
+    
 }

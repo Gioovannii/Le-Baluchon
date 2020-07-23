@@ -8,10 +8,10 @@
 @testable import Le_Baluchon
 import XCTest
 
-class HTTPEngineTests: XCTestCase {
+final class HTTPEngineTests: XCTestCase {
     
-    let url = URL(string: "http://data.fixer.io/api/latest?")!
-    let parameters = [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]
+    private let url = URL(string: "http://data.fixer.io/api/latest?")!
+    private let parameters = [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]
     
     // MARK: - Error
     func testGetCurrencyShouldPostFailedCallbackError() {
@@ -70,8 +70,6 @@ class HTTPEngineTests: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    
-    // Un autre fichier
     // MARK: - HTTPClient No data
     
     func testRequest_ShouldPostFailedCallback_IfError() {
@@ -118,7 +116,7 @@ class HTTPEngineTests: XCTestCase {
     
     
     // MARK: - HTTPClient undecodable Data
-
+    
     func test_ShouldPost_FailedCallBackIf_UndecodableData() {
         // Given
         let httpClient = HTTPClient(httpEngine: HTTPEngine(session: URLSessionFake(data: FakeResponseData.incorrectData, response: FakeResponseData.responseOK, error: nil)))
@@ -142,7 +140,7 @@ class HTTPEngineTests: XCTestCase {
     }
     
     // MARK: -  HTTPClient Success
-
+    
     func test_ShouldPost_SuccessCallBackIf_NoProblem() {
         // Given
         let httpClient = HTTPClient(httpEngine: HTTPEngine(session: URLSessionFake(data: FakeResponseData.fixerCorrectData, response: FakeResponseData.responseOK, error: nil)))

@@ -14,7 +14,6 @@ enum NetworkError: Error {
     case undecodableData
     case badInput
     
-    
     var description: String {
         switch self {
         case .noData:

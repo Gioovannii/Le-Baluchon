@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class FakeResponseData {
+final class FakeResponseData {
     //MARK: - Data
     static var weatherCorrectData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
@@ -40,10 +40,6 @@ class FakeResponseData {
     
     
     //MARK: - Error
-    class genericError: Error {}
+    final class genericError: Error {}
     static let error = genericError()
-    
-    
-    class FixerError: Error {}
-    static let fixerError = FixerError()
 }
