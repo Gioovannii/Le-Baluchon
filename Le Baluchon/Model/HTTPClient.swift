@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HTTPClient {
+final class HTTPClient {
     // MARK: - properties
     
     private let httpEngine: HTTPEngine

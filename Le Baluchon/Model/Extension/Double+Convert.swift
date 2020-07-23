@@ -1,15 +1,13 @@
 //
-//  File.swift
+//  Double+Convert.swift
 //  Le Baluchon
 //
-//  Created by Jonathan Gaffé on 2020/7/16.
+//  Created by Jonathan Gaffé on 2020/7/23.
 //  Copyright © 2020 Giovanni Gaffé. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-
-//Double+Convert 
 extension Double {
     var stringDigitFormat: String {
         let formater = NumberFormatter()
@@ -19,4 +17,3 @@ extension Double {
         return resultFormated
     }
 }
-
