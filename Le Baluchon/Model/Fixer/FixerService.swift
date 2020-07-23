@@ -21,7 +21,7 @@ final class FixerService {
     func getCurrency(currency: String, callback: @escaping (Result<FixerJSON, NetworkError>) -> Void) {
         guard let url = URL(string: "http://data.fixer.io/api/latest?") else { return }
         
-        httpClient.request(baseURL: url, parameters: [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]) { (result: (Result<FixerJSON, NetworkError>)) in
+        httpClient.request(baseURL: url, parameters: [("access_key", Config.fixer), ("symbols", "USD")]) { (result: (Result<FixerJSON, NetworkError>)) in
             
             switch result {
             case .success(let data):
@@ -31,16 +31,6 @@ final class FixerService {
                 callback(.failure(error))
             }
         }
-    }
-}
-
-extension Double {
-    var stringDigitFormat: String {
-        let formater = NumberFormatter()
-        formater.maximumFractionDigits = 3
-
-        guard let resultFormated = formater.string(from: NSNumber(value: self)) else { return String()}
-        return resultFormated
     }
 }
 

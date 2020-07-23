@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Fichier à part
+//UIViewController+Alert
 extension UIViewController {
     /// Alert for handle errors
     func presentAlert(title: String, message: String) {
@@ -17,3 +17,15 @@ extension UIViewController {
         present(alert, animated: true)
     }
 }
+
+//Double+Convert 
+extension Double {
+    var stringDigitFormat: String {
+        let formater = NumberFormatter()
+        formater.maximumFractionDigits = 3
+
+        guard let resultFormated = formater.string(from: NSNumber(value: self)) else { return String()}
+        return resultFormated
+    }
+}
+

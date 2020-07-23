@@ -16,11 +16,11 @@ class TranslationService {
         self.httpClient = httpClient
     }
     
-    func getCurrency(textInput: String, target: String, callback: @escaping (Result<TranslateJSON, NetworkError>) -> Void) {
+    func getTranslation(textInput: String, target: String, callback: @escaping (Result<TranslateJSON, NetworkError>) -> Void) {
         
         guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2?") else { return }
         
-        httpClient.request(baseURL: url, parameters: [("key", "AIzaSyDcD9KTh5XVcJoIlVtNSIl4Prj-4kSmEj8"), ("q", textInput), ("target", target), ("model", "base")]) { (result: Result<TranslateJSON, NetworkError>) in
+        httpClient.request(baseURL: url, parameters: [("key", Config.translate), ("q", textInput), ("target", target), ("model", "base")]) { (result: Result<TranslateJSON, NetworkError>) in
             
             switch result {
             case .success(let text):

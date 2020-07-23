@@ -53,7 +53,7 @@ final class TranslateViewController: UIViewController {
         
         inputTextView.resignFirstResponder()
         
-        translateService.getCurrency(textInput: text, target: target) { [unowned self] result  in
+        translateService.getTranslation(textInput: text, target: target) { [unowned self] result  in
             switch result {
             case .success(let text):
                 DispatchQueue.main.async {
@@ -63,7 +63,7 @@ final class TranslateViewController: UIViewController {
                         self.textOutputLabel.text = "In french please"
                         return
                     }
-
+                    print(text.data.translations[0].translatedText)
                     print("Text Translated = \(text.data.translations[0].translatedText)")
                     self.loadingUserButton.setTitle("Here youre translation", for: .normal)
                     self.textOutputLabel.text = text.data.translations[0].translatedText

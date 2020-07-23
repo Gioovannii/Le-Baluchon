@@ -10,13 +10,10 @@ import XCTest
 
 class FixerServiceTestCase: XCTestCase {
     
-    // MARK: - GetCurrency Success
-    
-    let url = URL(string: "http://data.fixer.io/api/latest?")!
-    let parameters = [("access_key", "173e725be7b0231e46c4f70d08b278eb"), ("symbols", "USD")]
-    
+    // MARK: - GetCurrency Success    
     func testGetCurrencyShouldPostSuccessCallbackIfNoError() {
         let fixer = FixerService(httpClient: HTTPClient(httpEngine: HTTPEngine(session: URLSessionFake(data: FakeResponseData.fixerCorrectData, response: FakeResponseData.responseOK, error: nil))))
+        
         
         let expectation = XCTestExpectation(description: "Wait for queue change")
         

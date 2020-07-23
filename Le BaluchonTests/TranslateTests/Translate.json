@@ -1,9 +1,11 @@
-    "translations": [
-      {
-        "translatedText": "Yes",
-        "detectedSourceLanguage": "fr",
-        "model": "base"
+    {
+      "data": {
+        "translations": [
+          {
+            "translatedText": "Yes",
+            "detectedSourceLanguage": "fr",
+            "model": "base"
+          }
+        ]
       }
-    ]
-  }
-}
+    }

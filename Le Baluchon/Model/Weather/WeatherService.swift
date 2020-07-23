@@ -24,7 +24,7 @@ class WeatherService {
         guard let url = URL(string: "https://api.openweathermap.org/data/2.5/group") else { return }
 
         
-        httpClient.request(baseURL: url, parameters: [("id", "5128581,2968815"), ("appid", "17121490b9e3ea8f4d54dc0b563f9fb2"), ("units", "metric")])  { [unowned self] (result: Result<WeatherJSON, NetworkError>) in
+        httpClient.request(baseURL: url, parameters: [("id", "5128581,2968815"), ("appid", Config.weather), ("units", "metric")])  { [unowned self] (result: Result<WeatherJSON, NetworkError>) in
             switch result {
             case .success(let data):
                 for i in 0..<data.cnt{
