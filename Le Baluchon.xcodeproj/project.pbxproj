@@ -30,7 +30,7 @@
 		7B463C3924A447A5008CDD70 /* TranslateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B463C3824A447A5008CDD70 /* TranslateViewController.swift */; };
 		7B46CBC224B2DF2300425AAC /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B46CBC124B2DF2300425AAC /* HTTPClient.swift */; };
 		7B49BFDF24C5AC5D00119B97 /* ExtensionFormatNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B49BFDE24C5AC5D00119B97 /* ExtensionFormatNumber.swift */; };
-		7B4B753024C976E50057653B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B752F24C976E50057653B /* Config.swift */; };
+		7B4B753224C97D4A0057653B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4B753124C97D4A0057653B /* Config.swift */; };
 		7B4DFA2B248E298F00DE7340 /* WeatherDataTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4DFA2A248E298F00DE7340 /* WeatherDataTestCase.swift */; };
 		7B5CE5F624936EE8006B6259 /* Fixer.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B5CE5F524936EE8006B6259 /* Fixer.json */; };
 		7B5F70D624ACA56C00A3802B /* Translate.json in Resources */ = {isa = PBXBuildFile; fileRef = 7B5F70D524ACA56C00A3802B /* Translate.json */; };
@@ -79,7 +79,7 @@
 		7B463C3824A447A5008CDD70 /* TranslateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateViewController.swift; sourceTree = "<group>"; };
 		7B46CBC124B2DF2300425AAC /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		7B49BFDE24C5AC5D00119B97 /* ExtensionFormatNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionFormatNumber.swift; sourceTree = "<group>"; };
-		7B4B752F24C976E50057653B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		7B4B753124C97D4A0057653B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		7B4DFA2A248E298F00DE7340 /* WeatherDataTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataTestCase.swift; sourceTree = "<group>"; };
 		7B5CE5F524936EE8006B6259 /* Fixer.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Fixer.json; sourceTree = "<group>"; };
 		7B5F70D524ACA56C00A3802B /* Translate.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Translate.json; sourceTree = "<group>"; };
@@ -165,7 +165,7 @@
 		04C6A0A52478D10800F3975E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7B4B752F24C976E50057653B /* Config.swift */,
+				7B4B753124C97D4A0057653B /* Config.swift */,
 				7B6069EC24ADF15C006EF207 /* HTTPEngine.swift */,
 				7B46CBC124B2DF2300425AAC /* HTTPClient.swift */,
 				7B6069EE24AF23C6006EF207 /* Logger.swift */,
@@ -393,7 +393,7 @@
 				0426BCB82488FD3E00E48D04 /* FixerService.swift in Sources */,
 				7B9EC66824A708E500EEC220 /* TranslateJSON.swift in Sources */,
 				04C6A0832478D0A300F3975E /* AppDelegate.swift in Sources */,
-				7B4B753024C976E50057653B /* Config.swift in Sources */,
+				7B4B753224C97D4A0057653B /* Config.swift in Sources */,
 				7B463C3924A447A5008CDD70 /* TranslateViewController.swift in Sources */,
 				0426BCBA2489130D00E48D04 /* FixerJSON.swift in Sources */,
 				7B46CBC224B2DF2300425AAC /* HTTPClient.swift in Sources */,
