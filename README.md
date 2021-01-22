@@ -1,7 +1,7 @@
 # Le-Baluchon
-Project 9
+## Project 9
 
-Objectifs for this project 
+**Objectifs for this project** 
 
 - ability to make multi page application
 - set functionnal unit tests
