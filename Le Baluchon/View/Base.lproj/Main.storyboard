@@ -393,6 +393,8 @@
                     <tabBarItem key="tabBarItem" title="translate" image="tab.translate" id="sIQ-17-YUb"/>
                     <connections>
                         <outlet property="englishOutletButton" destination="YGY-Mz-d1g" id="tzW-C9-nXJ"/>
+                        <outlet property="frenchLabel" destination="0gn-c5-MQ7" id="zsx-lt-ZyX"/>
+                        <outlet property="getTranslationButton" destination="LkQ-Hl-ghh" id="aac-jo-s5P"/>
                         <outlet property="inputTextView" destination="f7X-J7-bPg" id="Wmz-Fn-6lf"/>
                         <outlet property="loadingUserButton" destination="LkQ-Hl-ghh" id="sZ9-Q8-wdE"/>
                         <outlet property="mandarinOutletButton" destination="3gS-JD-g4B" id="jR3-rg-iGc"/>
