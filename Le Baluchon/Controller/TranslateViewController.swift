@@ -17,6 +17,8 @@ final class TranslateViewController: UIViewController {
     @IBOutlet weak var loadingUserButton: UIButton!
     @IBOutlet weak var englishOutletButton: UIButton!
     @IBOutlet weak var mandarinOutletButton: UIButton!
+    @IBOutlet weak var frenchLabel: UILabel!
+    @IBOutlet weak var getTranslationButton: UIButton!
     
     // MARK: - Properties
     
