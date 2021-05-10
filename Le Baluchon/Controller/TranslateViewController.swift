@@ -30,7 +30,16 @@ final class TranslateViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        englishOutletButton.layer.cornerRadius = 10
+        mandarinOutletButton.layer.cornerRadius = 10
+        
+        frenchLabel.layer.cornerRadius = 10
+        frenchLabel.layer.masksToBounds = true
+        getTranslationButton.layer.cornerRadius = 10
+        inputTextView.layer.cornerRadius = 10
+        
+        textOutputLabel.layer.cornerRadius = 10
+        textOutputLabel.layer.masksToBounds = true
     }
     
     // MARK: - Actions
